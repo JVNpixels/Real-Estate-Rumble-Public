@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mike-hey.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="hey0000" x="834" y="442" width="417" height="44" frameX="2" frameY="-366" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0001" x="834" y="348" width="417" height="94" frameX="2" frameY="-315" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0002" x="834" y="204" width="417" height="144" frameX="2" frameY="-265" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0003" x="0" y="412" width="417" height="304" frameX="2" frameY="-105" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0004" x="0" y="0" width="417" height="412" frameX="2" frameY="2" frameWidth="413" frameHeight="408"/>
+</TextureAtlas>

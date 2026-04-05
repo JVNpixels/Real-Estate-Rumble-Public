@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="robbie-hey.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="hey0000" x="0" y="0" width="429" height="424" frameX="7" frameY="2" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0001" x="429" y="0" width="420" height="420" frameX="2" frameY="2" frameWidth="413" frameHeight="408"/>
+	<SubTexture name="hey0002" x="0" y="424" width="417" height="412" frameX="2" frameY="0" frameWidth="413" frameHeight="408"/>
+</TextureAtlas>

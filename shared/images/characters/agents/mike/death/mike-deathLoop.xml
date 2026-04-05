@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mike-deathLoop.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="deathLoop0000" x="1239" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0001" x="826" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0002" x="413" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0003" x="0" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0004" x="1239" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0005" x="413" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0006" x="0" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0007" x="0" y="826" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="deathLoop0008" x="826" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+</TextureAtlas>

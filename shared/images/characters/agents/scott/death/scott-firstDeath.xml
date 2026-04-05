@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="scott-firstDeath.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="firstDeath0000" x="1224" y="0" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0001" x="816" y="816" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0002" x="816" y="0" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0003" x="1224" y="408" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0004" x="0" y="816" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0005" x="0" y="0" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0006" x="408" y="816" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0007" x="408" y="0" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0008" x="408" y="408" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0009" x="0" y="408" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+	<SubTexture name="firstDeath0010" x="816" y="408" width="408" height="408" frameX="1" frameY="1" frameWidth="410" frameHeight="410"/>
+</TextureAtlas>

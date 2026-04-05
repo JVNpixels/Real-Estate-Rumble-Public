@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mike-firstDeath.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="firstDeath0000" x="0" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0001" x="413" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0002" x="826" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0003" x="0" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0004" x="0" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0005" x="413" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0006" x="826" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0007" x="0" y="413" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0008" x="0" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0009" x="413" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+	<SubTexture name="firstDeath0010" x="826" y="0" width="413" height="413" frameX="1" frameY="1" frameWidth="415" frameHeight="415"/>
+</TextureAtlas>
