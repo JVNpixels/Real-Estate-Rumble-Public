@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "name": "Surrey Jack Album",
+  "albumOSTName": "S.J OST",
+  "artists": ["Pixel", "Excode"],
+  "albumArtAsset": "freeplay/albumRoll/surreyJack",
+  "albumTitleAsset": "freeplay/albumRoll/surreyJack-text",
+  "albumTitleOffsets": [-10, -10]
+}

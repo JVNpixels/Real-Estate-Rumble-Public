@@ -1,0 +1,54 @@
+{
+  "version": "2.2.4",
+  "songName": "Mortgage (Beta Mix)",
+  "artist": "Scott Moe (ft. Jason Deruuf) - Orchestrated by Pixel",
+  "charter": "RE/MAX Corporation",
+  "divisions": 96,
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "difficulties": [
+      "easybeta",
+      "normalbeta",
+      "hardbeta"
+    ],
+    "characters": {
+      "player": "scott-playable",
+      "girlfriend": "",
+      "opponent": "katronis",
+      "instrumental": "beta"
+    },
+    "stage": "katronisoffice-mortgage-beta",
+    "noteStyle": "funkin",
+    "ratings": {
+      "easybeta": 2,
+      "normalbeta": 3,
+      "hardbeta": 4
+    },
+    "album": "realEstateRumble-five",
+    "previewStart": 59482,
+    "previewEnd": 97450
+  },
+  "generatedBy": "Friday Night Funkin' - v0.8.1",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 154,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

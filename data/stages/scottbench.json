@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-400, 175],
+      "scale": [2, 2],
+      "animType": "sparrow",
+      "name": "Scott Moes Bench",
+      "isPixel": false,
+      "assetPath": "scottbench/moebench",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.7,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1189.5, 1300],
+      "cameraOffsets": [-100, -200]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [400, 1300],
+      "cameraOffsets": [145, -200]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [989.5, 1122.5]
+    }
+  },
+  "name": "Scott's Bench"
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "bgAsset": "freeplay/freeplay-remaxLogo-mike",
+  "selectorAsset": "freeplay/freeplaySelector/freeplaySelector-mike",
+  "numbersAsset": "digital_numbers_mike",
+  "capsuleAsset": "freeplay/freeplayCapsule/capsule/freeplayCapsule-mike",
+  "capsuleTextColors": ["#850000", "#FF0000"],
+  "startDelay": 1.0
+}

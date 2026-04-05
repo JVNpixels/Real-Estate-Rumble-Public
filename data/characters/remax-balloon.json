@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "RE/MAX Balloon",
+  "renderType": "sparrow",
+  "assetPath": "characters/balloon/remaxballoon",
+  "offsets": [0, -150],
+  "scale": 0.35,
+  "singTime": 8.0,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "BF idle dance",
+      "offsets": [-5, 0]
+    }
+  ]
+}

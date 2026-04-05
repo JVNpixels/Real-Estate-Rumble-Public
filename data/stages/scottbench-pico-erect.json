@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-1650, -400],
+      "scale": [3, 3],
+      "animType": "sparrow",
+      "name": "Scott Moes Pico Erect Bench",
+      "isPixel": false,
+      "assetPath": "scottbench/moebench-pico",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.5,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1374.5, 1600],
+      "cameraOffsets": [-100, -300]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [300, 1550],
+      "cameraOffsets": [195, -300]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [849.5, 1397.5]
+    }
+  },
+  "name": "Scott's Bench [Erect Pico]"
+}

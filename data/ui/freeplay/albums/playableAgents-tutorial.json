@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "name": "Tutorial Agent Mixes)",
+  "albumOSTName": "AGENTS OST",
+  "artists": ["Pixel", "Excode"],
+  "albumArtAsset": "freeplay/albumRoll/playableAgents-tutorial",
+  "albumTitleAsset": "freeplay/albumRoll/playableAgents-tutorial-text"
+}

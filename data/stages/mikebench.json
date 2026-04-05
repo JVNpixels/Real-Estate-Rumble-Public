@@ -1,0 +1,36 @@
+{
+  "props": [
+      {
+      "danceEvery": 0,
+      "zIndex": 20,
+      "position": [-600, -175],
+      "scale": [2, 2],
+      "animType": "sparrow",
+      "name": "Mike Marforis Bench",
+      "isPixel": false,
+      "assetPath": "mikebench/marforibench",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.7,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1200, 900],
+      "cameraOffsets": [-100, -120]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [70, 900],
+      "cameraOffsets": [695, -120]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [625, 950]
+    }
+  },
+  "name": "Mike's Bench"
+}

@@ -1,0 +1,75 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": -100,
+      "position": [-200, -100],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "halloweenBG",
+      "isPixel": false,
+      "startingAnimation": "idle",
+      "assetPath": "spooky/halloweenBgAgents",
+      "scroll": [1, 1],
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "flipY": false,
+          "frameRate": 24,
+          "prefix": "halloweem bg0",
+          "looped": true,
+          "flipX": false,
+          "name": "idle"
+        },
+        {
+          "offsets": [0, 0],
+          "flipY": false,
+          "frameRate": 24,
+          "prefix": "halloweem bg lightning strike",
+          "flipX": false,
+          "name": "lightning"
+        }
+      ]
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [300, -350],
+      "scale": [1.5, 1.5],
+      "animType": "sparrow",
+      "name": "light",
+      "isPixel": false,
+      "assetPath": "spooky/halloweenLight",
+      "alpha": 1,
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-200, -50],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "vignette",
+      "isPixel": false,
+      "assetPath": "spooky/vignette",
+      "alpha": 1,
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.75,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 200,
+      "position": [1089.5, 800],
+      "cameraOffsets": [-150, -100]
+    },
+    "gf": { "zIndex": 100, "position": [751.5, 787], "cameraOffsets": [0, 0] },
+    "dad": {
+      "zIndex": 200,
+      "position": [332, 790],
+      "cameraOffsets": [250, -75]
+    }
+  },
+  "name": "Spooky Mansion [Agents]"
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "bgAsset": "freeplay/freeplay-remaxLogo-scott",
+  "selectorAsset": "freeplay/freeplaySelector/freeplaySelector-scott",
+  "numbersAsset": "digital_numbers_scott",
+  "capsuleAsset": "freeplay/freeplayCapsule/capsule/freeplayCapsule-scott",
+  "capsuleTextColors": ["#002855", "#0078FF"],
+  "startDelay": 1.0
+}

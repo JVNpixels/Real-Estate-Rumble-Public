@@ -1,0 +1,36 @@
+{
+  "props": [
+      {
+      "danceEvery": 0,
+      "zIndex": 20,
+      "position": [-600, -175],
+      "scale": [2, 2],
+      "animType": "sparrow",
+      "name": "Mike Marforis Pico Bench",
+      "isPixel": false,
+      "assetPath": "mikebench/marforibench-erect",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.55,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1500, 1250],
+      "cameraOffsets": [-100, -200]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [170, 1250],
+      "cameraOffsets": [695, -200]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, -100],
+      "position": [950, 1165]
+    }
+  },
+  "name": "Mike's Bench [Pico]"
+}

@@ -1,0 +1,55 @@
+{
+  "version": "2.2.4",
+  "songName": "Fresh (Robbie Johal Mix)",
+  "artist": "Excode",
+  "charter": "Excode",
+  "divisions": 96,
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "difficulties": [
+      "easy",
+      "normal",
+      "hard"
+    ],
+    "characters": {
+      "player": "robbie-playable",
+      "girlfriend": "",
+      "opponent": "dad",
+      "instrumental": "robbie",
+      "altInstrumentals": ["pico", "mike", "default", "scott"]
+    },
+    "stage": "mainStageErect",
+    "noteStyle": "funkin",
+    "ratings": {
+      "easy": 1,
+      "normal": 1,
+      "hard": 2
+    },
+    "album": "playableAgents-one",
+    "previewStart": 0,
+    "previewEnd": 15000
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.5",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 120,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

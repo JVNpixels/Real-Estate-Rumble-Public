@@ -1,0 +1,220 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"applyStageMatrix": false,
+	"scale": 1,
+	"name": "Scott Moe (Playable)",
+	"flipX": false,
+	"cameraOffsets": [
+		0,
+		0
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/agents/scott/scott",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"flipX": false,
+		"id": "scott"
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "BF idle dance",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				52,
+				-6
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE LEFT0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-10,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE DOWN0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				1,
+				27
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE UP0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33,
+				-7
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE RIGHT0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				8,
+				3
+			],
+			"prefix": "missLEFT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/scott/scott-miss"
+		},
+		{
+			"offsets": [
+				6,
+				1
+			],
+			"prefix": "missDOWN",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/scott/scott-miss"
+		},
+		{
+			"offsets": [
+				2,
+				2
+			],
+			"prefix": "missUP",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/scott/scott-miss"
+		},
+		{
+			"offsets": [
+				7,
+				2
+			],
+			"prefix": "missRIGHT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/scott/scott-miss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"prefix": "hey",
+			"animType": "framelabel",
+			"name": "scottHey",
+			"looped": false,
+			"flipX": true,
+			"flipY": false,
+			"frameRate": 12,
+			"assetPath": "characters/agents/scott/scott-hey"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"scale": 1.5,
+			"prefix": "firstDeath",
+			"animType": "framelabel",
+			"name": "firstDeath",
+			"looped": false,
+			"flipX": true,
+			"flipY": false,
+			"frameRate": 5,
+			"assetPath": "characters/agents/scott/death/scott-firstDeath"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"scale": 1.5,
+			"prefix": "deathLoop",
+			"animType": "framelabel",
+			"name": "deathLoop",
+			"looped": true,
+			"flipX": true,
+			"flipY": false,
+			"frameRate": 12,
+			"assetPath": "characters/agents/scott/death/scott-deathLoop"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"scale": 1.5,
+			"prefix": "deathConfirm",
+			"animType": "framelabel",
+			"name": "deathConfirm",
+			"looped": false,
+			"flipX": true,
+			"flipY": false,
+			"frameRate": 12,
+			"assetPath": "characters/agents/scott/death/scott-deathConfirm"
+		}
+	]
+}

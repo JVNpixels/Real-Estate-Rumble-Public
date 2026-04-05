@@ -1,0 +1,220 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"applyStageMatrix": false,
+	"scale": 1,
+	"name": "Mike Marfori (Playable)",
+	"flipX": false,
+	"cameraOffsets": [
+		0,
+		0
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/agents/mike/mike",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"flipX": false,
+		"id": "mike"
+	},
+	"atlasSettings": {
+		"swfMode": true,
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "BF idle dance",
+			"flipX": false,
+			"looped": false,
+			"name": "idle",
+			"animType": "framelabel"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				12,
+				-6
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE RIGHT0",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT",
+			"animType": "framelabel"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-10,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE DOWN0",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN",
+			"animType": "framelabel"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-29,
+				27
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE UP0",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP",
+			"animType": "framelabel"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-38,
+				-7
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE LEFT0",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT",
+			"animType": "framelabel"
+		},
+				{
+			"offsets": [
+				8,
+				3
+			],
+			"prefix": "missLEFT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/mike/mike-miss"
+		},
+		{
+			"offsets": [
+				6,
+				1
+			],
+			"prefix": "missDOWN",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/mike/mike-miss"
+		},
+		{
+			"offsets": [
+				2,
+				2
+			],
+			"prefix": "missUP",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/mike/mike-miss"
+		},
+		{
+			"offsets": [
+				7,
+				2
+			],
+			"prefix": "missRIGHT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss",
+			"flipY": false,
+			"frameRate": 24,
+			"assetPath": "characters/agents/mike/mike-miss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"prefix": "hey",
+			"flipX": false,
+			"looped": false,
+			"animType": "framelabel",
+			"name": "mikeHey",
+			"flipY": false,
+			"assetPath": "characters/agents/mike/mike-hey",
+			"frameRate": 16
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"scale": 1.5,
+			"prefix": "firstDeath",
+			"name": "firstDeath",
+			"looped": false,
+			"flipX": true,
+			"animType": "framelabel",
+			"flipY": false,
+			"frameRate": 5,
+			"assetPath": "characters/agents/mike/death/mike-firstDeath"
+		},
+		{
+			"offsets": [
+				-4,
+				-2
+			],
+			"scale": 1.5,
+			"prefix": "deathLoop",
+			"name": "deathLoop",
+			"looped": true,
+			"flipX": true,
+			"animType": "framelabel",
+			"flipY": false,
+			"frameRate": 12,
+			"assetPath": "characters/agents/mike/death/mike-deathLoop"
+		},
+		{
+			"offsets": [
+				-5,
+				-2
+			],
+			"scale": 1.5,
+			"prefix": "deathConfirm",
+			"name": "deathConfirm",
+			"looped": false,
+			"flipX": true,
+			"animType": "framelabel",
+			"flipY": false,
+			"frameRate": 12,
+			"assetPath": "characters/agents/mike/death/mike-deathConfirm"
+		}
+	]
+}

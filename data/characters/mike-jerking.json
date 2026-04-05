@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "Mike Marfori (Jerking)",
+  "renderType": "sparrow",
+  "assetPath": "characters/agents/mike/jerking/mike-jerking",
+  "flipX": false,
+  "singTime": 8.0,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle0",
+      "offsets": [-5, 0],
+      "frameRate": 60
+    }
+  ]
+}

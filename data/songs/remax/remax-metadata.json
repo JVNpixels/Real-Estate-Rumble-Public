@@ -1,0 +1,66 @@
+{
+  "version": "2.2.4",
+  "songName": "RE/MAX",
+  "artist": "Pixel",
+  "charter": "Pixel + Excode",
+  "divisions": 96,
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [
+      "erect",
+      "pico",
+      "erectpico"
+    ],
+    "difficulties": [
+      "easy",
+      "normal",
+      "hard"
+    ],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf-floating",
+      "opponent": "mike",
+      "instrumental": "",
+      "altInstrumentals": [      ],
+      "opponentVocals": [
+        "mike"
+      ],
+      "playerVocals": [
+        "bf"
+      ]
+    },
+    "stage": "mikebench",
+    "noteStyle": "funkin",
+    "ratings": {
+      "easy": 2,
+      "normal": 3,
+      "hard": 4
+    },
+    "album": "realEstateRumble",
+    "previewStart": 59482,
+    "previewEnd": 97450
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 120,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

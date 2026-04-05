@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "name": "Week 4 (Agent Mixes) (Volume 9)",
+  "albumOSTName": "AGENTS OST",
+  "artists": ["Pixel", "Excode"],
+  "albumArtAsset": "freeplay/albumRoll/playableAgents-four",
+  "albumTitleAsset": "freeplay/albumRoll/playableAgents-four-text"
+}

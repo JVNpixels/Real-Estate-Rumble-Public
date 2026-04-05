@@ -1,0 +1,36 @@
+{
+  "props": [
+      {
+      "danceEvery": 0,
+      "zIndex": 20,
+      "position": [-1900, -1450],
+      "scale": [4, 4],
+      "animType": "sparrow",
+      "name": "GTC",
+      "isPixel": false,
+      "assetPath": "gtc/gtc",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.4,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1700, 1200],
+      "cameraOffsets": [-850, -550]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [70, 1200],
+      "cameraOffsets": [500, -550]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [-50, -250],
+      "position": [925, 1100]
+    }
+  },
+  "name": "Guildford Town Centre"
+}

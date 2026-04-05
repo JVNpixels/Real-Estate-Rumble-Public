@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "name": "Real Estate Rumble (Volume 3)",
+  "albumOSTName": "R.E.R OST",
+  "artists": ["Pixel", "Excode"],
+  "albumArtAsset": "freeplay/albumRoll/realEstateRumble-three",
+  "albumTitleAsset": "freeplay/albumRoll/realEstateRumble-three-text"
+}

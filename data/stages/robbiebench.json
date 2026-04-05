@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-600, -200],
+      "scale": [2, 2],
+      "animType": "sparrow",
+      "name": "Robbie Johals Bench",
+      "isPixel": false,
+      "assetPath": "robbiebench/johalbench",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.7,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1400, 1100],
+      "cameraOffsets": [-500, -120]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [0, 1100],
+      "cameraOffsets": [645, -120]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [700, -120],
+      "position": [600, 900]
+    }
+  },
+  "name": "Robbie's Bench"
+}

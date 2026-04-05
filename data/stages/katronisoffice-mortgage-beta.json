@@ -1,0 +1,90 @@
+{
+    "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-675, -600],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Katronis Office",
+      "isPixel": false,
+      "assetPath": "katronisoffice/katronis-office",
+      "scroll": [1, 1],
+      "alpha": 1,
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [450, 375],
+      "scale": [1.7, 1.7],
+      "animType": "sparrow",
+      "name": "Jason Derulo",
+      "isPixel": false,
+      "assetPath": "katronisoffice/mortgage-beta/deruuf",
+      "scroll": [1, 1],
+      "alpha": 1,
+      "animations": []
+    },
+    {
+      "name": "Mike Marfori",
+      "assetPath": "agent-props/mike",
+      "position": [1482, 350],
+      "scale": [1, 1],
+      "scroll": [1, 1],
+      "danceEvery": 0,
+      "zIndex": 15,
+      "startingAnimation": "idle",
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "idleProp0",
+          "frameRate": 24,
+          "looped": true,
+          "flipX": true,
+          "flipY": false
+        }
+      ]
+    },
+    {
+      "name": "Robbie Johal",
+      "assetPath": "agent-props/robbie",
+      "position": [882, 350],
+      "scale": [1, 1],
+      "scroll": [1, 1],
+      "danceEvery": 0,
+      "zIndex": 15,
+      "startingAnimation": "idle",
+      "animations": [
+        {
+          "name": "idle",
+          "prefix": "idleProp0",
+          "frameRate": 24,
+          "looped": true,
+          "flipX": false,
+          "flipY": false
+        }
+      ]
+    }
+  ],
+  "cameraZoom": 0.7,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1200, 900],
+      "cameraOffsets": [-350, -120]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [70, 900],
+      "cameraOffsets": [445, -120]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [625, 950]
+    }
+  },
+  "name": "Katronis Office (Mortgage (Beta Mix))"
+}

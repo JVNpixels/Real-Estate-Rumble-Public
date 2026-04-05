@@ -1,0 +1,36 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [-2200, 175],
+      "scale": [1.5, 1.5],
+      "animType": "sparrow",
+      "name": "Robbie Johals Erect Bench",
+      "isPixel": false,
+      "assetPath": "robbiebench/johalbench-erect",
+      "scroll": [1, 1],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 0.6,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [1400, 1300],
+      "cameraOffsets": [-500, -170]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [-5, 1300],
+      "cameraOffsets": [645, -170]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [700, -120],
+      "position": [700, 1100]
+    }
+  },
+  "name": "Robbie's Bench [Erect]"
+}

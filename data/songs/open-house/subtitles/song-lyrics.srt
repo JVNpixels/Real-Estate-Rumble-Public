@@ -1,0 +1,11 @@
+﻿1
+00:01:52,000 --> 00:01:53,00
+Hey, if you don't know who we are...
+
+2
+00:01:53,001 --> 00:01:54,680
+We are the MOE Real Estate Team
+
+3
+00:01:54,681 --> 00:01:54,880
+uh.

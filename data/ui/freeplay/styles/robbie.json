@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "bgAsset": "freeplay/freeplay-remaxLogo",
+  "selectorAsset": "freeplay/freeplaySelector/freeplaySelector-robbie",
+  "numbersAsset": "digital_numbers_robbie",
+  "capsuleAsset": "freeplay/freeplayCapsule/capsule/freeplayCapsule-robbie",
+  "capsuleTextColors": ["#FFFFFF", "#F0F0F0"],
+  "startDelay": 1.0
+}

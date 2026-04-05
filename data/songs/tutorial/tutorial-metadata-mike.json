@@ -1,0 +1,22 @@
+{
+  "version": "2.2.4",
+  "songName": "Tutorial (Mike Marfori Mix)",
+  "artist": "Pixel",
+  "charter": "Pixel",
+  "offsets": {},
+  "playData": {
+    "difficulties": ["easy", "normal", "hard"],
+    "characters": {
+      "player": "mike-playable",
+      "opponent": "remax-balloon",
+      "instrumental": "mike",
+      "altInstrumentals": ["default", "scott", "robbie"]
+    },
+    "stage": "mainStageErect",
+    "noteStyle": "funkin",
+    "ratings": { "easy": 1, "normal": 1, "hard": 2 },
+    "album": "playableAgents-tutorial"
+  },
+  "generatedBy": "Friday Night Funkin' - v0.8.1",
+  "timeChanges": [{ "t": 0, "b": 0, "bpm": 100, "bt": [4, 4, 4, 4] }]
+}

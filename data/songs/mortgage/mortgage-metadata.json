@@ -1,0 +1,56 @@
+{
+  "version": "2.2.4",
+  "songName": "Mortgage",
+  "artist": "Pixel",
+  "charter": "Pixel",
+  "divisions": 96,
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": ["erect", "beta"],
+    "difficulties": [
+      "easy",
+      "normal",
+      "hard"
+    ],
+    "characters": {
+      "player": "scott-playable",
+      "girlfriend": "",
+      "opponent": "katronis",
+      "instrumental": "",
+      "altInstrumentals": [      ]
+    },
+    "stage": "katronisoffice-scott",
+    "noteStyle": "funkin",
+    "ratings": {
+      "easy": 2,
+      "normal": 3,
+      "hard": 4
+    },
+    "album": "realEstateRumble-five",
+    "previewStart": 59482,
+    "previewEnd": 97450
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 154,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

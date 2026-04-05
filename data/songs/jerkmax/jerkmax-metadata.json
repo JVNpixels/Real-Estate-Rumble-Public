@@ -1,0 +1,55 @@
+{
+  "version": "2.2.4",
+  "songName": "JERK/MAX Erect (BF Mix) (Tankman Mix) (Darnell Mix) (Pico Mix) (Daddy Dearest Mix) (Spooky Kids Mix) (GF Mix) (Nene Mix) (Senpai Mix) (Spirit Mix) (Mix Mix) (Mike Marfori Mix) (Scott Moe Mix) (Robbie Johal Mix) (Katronis Mix) (RE/MAX Mix) But Not Really LOL SOS Wait A Second Maybe It Is I Am Unsure Though Hey Kids Can You See If REMAX Is Tuff And SOS I Think this capsule is gonna go longer off the screen or something rip the mp3 freeplay capsule guys lol sosososososososoossososososososo maybe i should probably poop now, see you guys! yiys! ABCDEFGHIJKLMNOPQRSTUVWXYZ NOW I KNOW MY A A A'S NEXT TIME WONT YOU SING WITH ME, EE, E, SOS.",
+  "artist": "pix",
+  "charter": "els",
+  "divisions": 96,
+  "looped": false,
+  "offsets": {
+    "instrumental": 0,
+    "altInstrumentals": {    },
+    "vocals": {    },
+    "altVocals": {    }
+  },
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [
+      "easy",
+      "normal",
+      "hard"
+    ],
+    "characters": {
+      "player": "bf",
+      "girlfriend": "gf",
+      "opponent": "mike-jerking",
+      "instrumental": "",
+      "altInstrumentals": [      ]
+    },
+    "stage": "mikebench",
+    "noteStyle": "funkin",
+    "ratings": {
+      "easy": 0,
+      "normal": 0,
+      "hard": 0
+    },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.7.4",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 500,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

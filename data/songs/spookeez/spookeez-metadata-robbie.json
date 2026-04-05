@@ -1,0 +1,62 @@
+{
+ "version": "2.2.4",
+ "songName": "Spookeez (Robbie Johal Mix)",
+ "artist": "Excode",
+ "charter": "Excode",
+ "divisions": 96,
+ "looped": false,
+ "offsets": {
+  "instrumental": 0,
+  "altInstrumentals": {  },
+  "vocals": {  },
+  "altVocals": {  }
+ },
+ "playData": {
+  "songVariations": [],
+  "difficulties": [
+   "easy",
+   "normal",
+   "hard"
+  ],
+  "characters": {
+   "player": "robbie-playable",
+   "girlfriend": "",
+   "opponent": "spooky",
+   "instrumental": "robbie",
+   "altInstrumentals": [
+    "pico",
+    "mike",
+    "default",
+    "scott"
+   ],
+   "opponentVocals": [
+    "spooky"
+   ],
+   "playerVocals": [
+    "robbie-playable"
+   ]
+  },
+  "stage": "spookyMansion-agents",
+  "noteStyle": "funkin",
+  "ratings": {
+   "easy": 3,
+   "hard": 8,
+   "normal": 5
+  },
+  "album": "playableAgents-two",
+  "previewStart": 0,
+  "previewEnd": 15000
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.1",
+ "timeFormat": "ms",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 150,
+   "n": 4,
+   "d": 4,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+  "version": "2.2.4",
+  "timeFormat": "ms",
+  "artist": "Pixel",
+  "charter": "Pixel",
+  "playData": {
+    "album": "playableAgents-one",
+    "stage": "mainStageErect",
+    "characters": {
+      "player": "mike-playable",
+      "girlfriend": "",
+      "opponent": "dad",
+      "instrumental": "mike",
+      "altInstrumentals": ["pico", "default", "scott", "robbie"]
+    },
+    "ratings": { "easy": 2, "normal": 4, "hard": 5 },
+    "difficulties": ["easy", "normal", "hard"],
+    "noteStyle": "funkin"
+  },
+  "songName": "DadBattle (Mike Marfori Mix)",
+  "timeChanges": [{ "d": 4, "n": 4, "t": -1, "bt": [4, 4, 4, 4], "bpm": 180 }],
+  "generatedBy": "Chart Editor Import (FNF Legacy)"
+}
