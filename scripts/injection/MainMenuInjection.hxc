@@ -1,0 +1,46 @@
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.options.OptionsState;
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import funkin.Paths;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxStringUtil;
+import flixel.FlxSprite;
+import funkin.graphics.shaders.HSVShader;
+import funkin.audio.FunkinSound;
+
+class MainMenuInjection extends Module
+{
+  var modName:String = "REAL ESTATE RUMBLE";
+  var updateVer:String = "v8.0.1";
+  var updateTitle:String = "TUTORIAL AGENT MIXES";
+
+  public function new()
+  {
+    super('main-menu-injection');
+  }
+
+  override function onUpdate(event:UpdateScriptEvent)
+  {
+	  super.onUpdate(event);
+
+    if (FlxG.state is MainMenuState)
+    { 
+      if (RealEstateRumbleSave.watermarkMainMenuEnabled())
+      {
+        FlxG.state.rightWatermarkText.text = modName + " " + updateVer + " " + updateTitle;
+        if (RealEstateRumbleSave.cashMechanicEnabled()) FlxG.state.rightWatermarkText.text += "\n" + "REAL ESTATE RUMBLE CASH: $" + FlxStringUtil.formatMoney(RealEstateRumbleSave.getCash(), false, true);
+        FlxG.state.rightWatermarkText.y = FlxG.height - FlxG.state.rightWatermarkText.height;
+      }
+      
+      if (RealEstateRumbleSave.remaxBgEnabled())
+      {
+        FlxG.state.bg.loadGraphic(Paths.image("remaxBG"));
+        FlxG.state.magenta.loadGraphic(Paths.image("remaxBG-magenta"));
+      }
+    }
+  }
+}

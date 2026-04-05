@@ -1,0 +1,113 @@
+import funkin.modding.module.Module;
+import funkin.ui.credits.CreditsState;
+import funkin.ui.credits.CreditsDataHandler;
+import flixel.FlxG;
+
+class CreditsMenuInjection extends Module
+{
+  public function new()
+  {
+    super("credits-injection");
+
+    FlxG.signals.postGameStart.addOnce(addRerCredits);
+  }
+
+  function addRerCredits() // The categories have to be in reverse order, due to the `unshift` function sending the data to the top of the credits.
+  {
+    CreditsDataHandler.CREDITS_DATA.entries.unshift( // Top = Last
+    {
+      header: "Special Thanks - Real Estate Rumble",
+      body: [
+      {
+        line: "AbnormalPoof - Video Event",
+      },
+      {
+        line: "Gooey Mixes (LeGooey) - Custom Medals Script Reference",
+      },
+      {
+        line: "Sonic Jam (iScreamTeam) - Week Unlocking Script References",
+      },
+      {
+        line: "ImVeryBad / Starexify - Fixed Freeplay Injection",
+      },
+      {
+        line: "DaWaterMalone - Sold! Erect Health Drain Script",
+      },
+      {
+        line: "PyroK - Character Select Screen assets for Playable Agents",
+      },
+      {
+        line: "KITTENLORD101 - Results Music for Playable Agents",
+      },
+      {
+        line: "ZXC - Album Art for the Real Estate Rumble YouTube OST",
+      },
+      {
+        line: "",
+      },
+      {
+        line: "YouTube Channel - https://www.youtube.com/@RealEstateRumble",
+      },
+      {
+        line: "",
+      },
+      {
+        line: "You can rely on the RE/MAX Real Estate Team(uh)!",
+      },
+      {
+        line: "",
+      },
+      {
+        line: "--------------------------------------------------------",
+      }]
+    });
+
+    CreditsDataHandler.CREDITS_DATA.entries.unshift( // Same Thing In-Game
+    {
+      header: "Surrey Gangster",
+      body: [
+      {
+        line: "Surrey Jack",
+      }]
+    });
+
+    CreditsDataHandler.CREDITS_DATA.entries.unshift( // Same Thing In-Game
+    {
+      header: "Rival Team",
+      body: [
+      {
+        line: "Katronis Real Estate Team",
+      }]
+    });
+
+    CreditsDataHandler.CREDITS_DATA.entries.unshift( // Same Thing In-Game
+    {
+      header: "Real Estate Agents",
+      body: [
+      {
+        line: "Mike Marfori",
+      },
+      {
+        line: "Scott Moe",
+      },
+      {
+        line: "Robbie Johal",
+      }]
+    });
+
+    CreditsDataHandler.CREDITS_DATA.entries.unshift( // Last = Top
+    {
+      header: "Real Estate Rumble Team(uh)",
+      body: [
+      {
+        line: "Pixel",
+      },
+      {
+        line: "Excode",
+      },
+      {
+        line: "RE/MAX Corporation (no not really LOL)",
+      }]
+    });
+   }
+ }

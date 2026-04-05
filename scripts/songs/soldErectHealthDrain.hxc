@@ -1,0 +1,44 @@
+import funkin.play.song.Song;
+import funkin.modding.module.Module;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.util.Constants;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+
+class SoldErectHealthDrainModule extends Module 
+{
+    var lowestHP:Float = 0.1;
+    var boostHPDrainBy:Int = 3;
+
+    public function new() 
+    {
+        super('sold-erect-health');
+    }
+
+    override function onNoteHit(event:HitNoteScriptEvent):Void
+    {
+        super.onNoteHit(event);
+
+        if (FlxG.state is PlayState)
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)")
+            {
+                if (PlayState.instance.opponentStrumline.getNotesMayHit().contains( event.note ))
+                {
+                    if (!event.note && !event.note.isHoldNote && !PlayState.instance.vocals.opponentVolume == 0)
+                    {
+                        if (PlayState.instance.health > lowestHP) PlayState.instance.health -= Constants.HEALTH_GOOD_BONUS * boostHPDrainBy * 0.75;
+                    }
+                }
+            }
+        }
+    }
+}

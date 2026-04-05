@@ -1,0 +1,35 @@
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.ui.options.OptionsState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.mainmenu.MainMenuState;
+import haxe.Json;
+
+class WatermarkMainMenuOption extends Module 
+{
+	public function new() 
+	{
+		super('WatermarkMainMenuOption');
+	}
+
+	override function onUpdate(event:UpdateScriptEvent) 
+	{
+		super.onUpdate(event);
+	}
+
+	public function onStateChangeEnd(event:StateChangeScriptEvent) 
+	{
+		if (Std.isOfType(event.targetState, OptionsState)) 
+		{
+			if (event.targetState.optionsCodex.pages.get("preferences") != null) 
+			{
+				event.targetState.optionsCodex.pages.get("preferences").createPrefItemCheckbox('RER Watermark', "If enabled, the custom Real Estate Rumble watermark will show in the bottom right corner of the Main Menu.", function(watermarkMainMenuRER:Bool):Void {
+							RealEstateRumbleSave.realEstateRumbleSave.data.watermarkMainMenuRER = watermarkMainMenuRER;
+							RealEstateRumbleSave.flush;
+					}, RealEstateRumbleSave.realEstateRumbleSave.data.watermarkMainMenuRER);
+			}
+		}
+	}
+}

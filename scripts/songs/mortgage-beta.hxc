@@ -1,0 +1,125 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+import funkin.graphics.shaders.AdjustColorShader;
+
+class MortgageBetaModule extends Song 
+{
+    var scottShader:AdjustColorShader = new AdjustColorShader(0, 0, 0, 0); // Hue, Saturation, Brightness, Contrast.
+    var fadeIntroDone:Bool = false;
+    var fadeEffectDone:Bool = false;
+
+    var deruufTween:FlxTween = new FlxTween();
+
+    public function new() 
+    {
+        super("mortgage",
+        {
+            variation: 'beta'
+        });
+    }
+
+    override function onUpdate(e) 
+    {
+        super.onUpdate(e);
+
+        PlayState.instance.currentStage.getBoyfriend().shader = scottShader;
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp("Jason Derulo").shader = scottShader;
+
+        if (Conductor.instance.currentBeat == 32 && (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "beta"))
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+            PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+        }
+
+        if (Conductor.instance.currentBeat == 128 && (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "beta"))
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 2, true);
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Katronis Office'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Mike Marfori'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johal'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat > 127 && !fadeIntroDone) scottShader.brightness += 10 * (e.elapsed * PlayState.instance.playbackRate);
+
+        if (Conductor.instance.currentBeat == 160) PlayState.instance.camGame.flash(0x80FFFFFF, 3, true);
+
+        if (Conductor.instance.currentBeat == 192 && (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "beta"))
+        {
+            fadeIntroDone = true;
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Katronis Office'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Mike Marfori'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+            if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johal'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat > 191)
+        {
+            if (scottShader.brightness > 0 && !fadeEffectDone)
+            {
+                scottShader.brightness -= 480 * (e.elapsed * PlayState.instance.playbackRate);
+                if (scottShader.brightness < 0) fadeEffectDone = true;
+            } 
+        }
+
+        if (Conductor.instance.currentBeat == 332) PlayState.instance.camGame.fade(0xFF000000, 0.001, false);
+    }
+    
+    override function onSongRetry(event):Void 
+    {
+        super.onSongRetry(event);
+
+        scottShader.brightness = 0;
+        fadeEffectDone = false;
+        
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Katronis Office').alpha = 1;
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Mike Marfori').alpha = 1;
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Robbie Johal').alpha = 1;
+    }
+
+    override function onBeatHit(event):Void
+    {
+        super.onBeatHit(event);
+
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))")
+        {
+            if (deruufTween != null) deruufTween.cancel();
+            
+            if (Conductor.instance.currentBeat > 127 && Conductor.instance.currentBeat < 191)
+            {
+                PlayState.instance.currentStage.getNamedProp('Jason Derulo').scale.set(2.0, 2.0);
+                deruufTween = FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Jason Derulo').scale, {x: 1.8, y: 1.8}, 0.5, {ease: FlxEase.quadOut});
+                PlayState.instance.currentStage.getNamedProp('Jason Derulo').flipX = !PlayState.instance.currentStage.getNamedProp('Jason Derulo').flipX;
+            } 
+
+            if (Conductor.instance.currentBeat > 215 && Conductor.instance.currentBeat < 320)
+            {
+                PlayState.instance.currentStage.getNamedProp('Jason Derulo').scale.set(2.0, 2.0);
+                deruufTween = FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Jason Derulo').scale, {x: 1.8, y: 1.8}, 0.5, {ease: FlxEase.quadOut});
+                PlayState.instance.currentStage.getNamedProp('Jason Derulo').flipX = !PlayState.instance.currentStage.getNamedProp('Jason Derulo').flipX;
+            }
+        } 
+    }
+
+    override function onGameOver(event):Void 
+    {
+        super.onGameOver(event);
+
+        scottShader.brightness = 0;
+
+        fadeIntroDone = false;
+        fadeEffectDone = false;
+        
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Katronis Office').alpha = 1;
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Mike Marfori').alpha = 1;
+        if (PlayState.instance.currentStage.stageName == "Katronis Office (Scott Moe)" || PlayState.instance.currentStage.stageName == "Katronis Office (Mortgage (Beta Mix))") PlayState.instance.currentStage.getNamedProp('Robbie Johal').alpha = 1;
+    }
+}

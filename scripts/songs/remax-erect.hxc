@@ -1,0 +1,59 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+
+class RemaxErectModule extends Song 
+{
+    public function new() 
+    {
+        super('remax',
+        {
+            variation: 'erect'
+        });
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) 
+    {
+        super.onUpdate(event);
+
+        if (Conductor.instance.currentBeat == 1 && PlayState.instance.currentVariation == "erect")
+        {
+            if (PlayState.instance.currentStage.stageName == "Mike's Bench [Erect]") PlayState.instance.currentStage.getNamedProp('Mike Marforis Erect Bench').alpha = 1;
+        }
+
+        if (Conductor.instance.currentBeat == 4 && PlayState.instance.currentVariation == "erect")
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+        }
+
+        if (Conductor.instance.currentBeat == 132 && PlayState.instance.currentVariation == "erect")
+        {
+            if (PlayState.instance.currentStage.stageName == "Mike's Bench [Erect]") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Mike Marforis Erect Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 164 && PlayState.instance.currentVariation == "erect")
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+            if (PlayState.instance.currentStage.stageName == "Mike's Bench [Erect]") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Mike Marforis Erect Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+    }
+
+    override function onSongRetry(event):Void 
+    {
+        super.onSongRetry(event);
+        
+        if (PlayState.instance.currentVariation == "erect")
+        {
+            if (PlayState.instance.currentStage.stageName == "Mike's Bench [Erect]") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Mike Marforis Erect Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        } 
+    }
+}

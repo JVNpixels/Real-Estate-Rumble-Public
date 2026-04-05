@@ -1,0 +1,73 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+
+class RemaxModule extends Song 
+{
+    var hasPlayedCutscene:Bool = false;
+
+    public function new() 
+    {
+        super("remax");
+    }
+
+    public override function onCountdownStart(event:CountdownScriptEvent):Void
+    {
+        super.onCountdownStart(event);
+
+        if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
+        if (PlayState.instance.currentVariation != "default") hasPlayedCutscene = true; // Comment out or delete this this line to play the original cutscene in Erect / Nightmare Story Mode!
+
+        if (!hasPlayedCutscene)
+        {
+            trace('Pausing countdown to play a video cutscene (`remax`)');
+            hasPlayedCutscene = true;
+            event.cancel(); // CANCEL THE COUNTDOWN!
+            startVideo();
+        }
+    }
+
+    function startVideo()
+    {
+        VideoCutscene.play(Paths.videos('remax-cutscene'));
+    }
+    
+    /**
+    * Replay the cutscene after leaving the song.
+    */
+    function onCreate(event:ScriptEvent):Void
+    {
+        super.onCreate(event);
+
+        hasPlayedCutscene = false;
+    }
+
+    public override function listAltInstrumentalIds(difficultyId:String, variationId:String):Array<String>
+    {
+        if (difficultyId == 'easy' || difficultyId == 'normal' || difficultyId == 'hard' || difficultyId == 'erect' || difficultyId == 'nightmare') 
+	    {
+            switch (variationId) 
+	        {
+                default:
+                    return ['pico'];
+		        case 'pico':
+	  		        return [''];
+                case 'erect':
+                    return ['erectpico'];
+		        case 'erectpico':
+	  		        return ['erect'];
+            }
+        }
+
+        return [];
+    }
+}

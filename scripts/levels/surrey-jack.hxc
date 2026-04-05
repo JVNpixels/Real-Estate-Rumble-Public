@@ -1,0 +1,43 @@
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.util.Constants;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.story.Level;
+
+class SurreyJackWeek extends Level
+{
+	function new()
+	{
+		super('surrey-jack');
+	}
+
+  override function isVisible():Bool 
+  {
+    return beatenWeekK();
+  }
+
+  override function isUnlocked():Bool 
+  {
+    return beatenWeekK();
+  }
+
+  override function getSongs():Array<String>
+  {
+    var defaultList:Array<String> = super.getSongs();
+    if (Std.isOfType(FlxG.state.subState, FreeplayState)) 
+    {
+      if (!beatenWeekK()) defaultList.remove("surrey-jack");
+    }
+    return defaultList;
+  }
+
+  public function beatenWeekK():Bool
+  {
+      for (diff in Constants.DEFAULT_DIFFICULTY_LIST_FULL)
+      {
+          if ((Save.instance.getLevelScore('rival-katronis', diff)?.score ?? 0) > 0) return true;
+      }
+
+      return false;
+  }
+}

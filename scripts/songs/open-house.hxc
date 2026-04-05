@@ -1,0 +1,87 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
+class OpenHouseModule extends Song 
+{
+    public function new() 
+    {
+        super("open-house");
+    }
+
+    override function onUpdate(e) 
+    {
+        super.onUpdate(e);
+
+        if (Conductor.instance.currentBeat == 1 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") PlayState.instance.currentStage.getNamedProp('Scott Moes Bench').alpha = 1;
+        }
+
+        if (Conductor.instance.currentBeat == 64 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Scott Moes Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 96 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Scott Moes Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 192 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Scott Moes Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 224 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Scott Moes Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 16 && PlayState.instance.currentVariation == "erect")
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+        }
+
+        if (Conductor.instance.currentBeat == 144 && PlayState.instance.currentVariation == "erect")
+        {
+            PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+        }
+    }
+
+    override function onSongRetry(event):Void 
+    {
+        super.onSongRetry(event);
+        
+        if (PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Scott's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Scott Moes Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        } 
+    }
+
+    public override function listAltInstrumentalIds(difficultyId:String, variationId:String):Array<String>
+    {
+        if (difficultyId == 'easy' || difficultyId == 'normal' || difficultyId == 'hard' || difficultyId == 'erect' || difficultyId == 'nightmare') 
+	    {
+            switch (variationId) 
+	        {
+                default:
+                    return ['pico'];
+		        case 'pico':
+	  		        return [''];
+                case 'erect':
+                    return ['erectpico'];
+		        case 'erectpico':
+	  		        return ['erect'];
+            }
+        }
+
+        return [];
+    }
+}

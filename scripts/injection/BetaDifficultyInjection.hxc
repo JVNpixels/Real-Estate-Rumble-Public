@@ -1,0 +1,20 @@
+import flixel.FlxG;
+import funkin.util.Constants;
+import funkin.modding.module.Module;
+
+class BetaDifficultyInjection extends Module
+{
+  public function new()
+  {
+    super('beta-difficulty-injection');
+
+    FlxG.signals.postGameStart.addOnce(pushDiffs);
+  }
+
+  function pushDiffs()
+  {
+    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("easybeta");
+    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("normalbeta");
+    Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("hardbeta");
+  }
+}

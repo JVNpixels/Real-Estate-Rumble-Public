@@ -1,0 +1,36 @@
+import funkin.play.song.Song;
+import funkin.save.Save;
+import funkin.Conductor;
+import flixel.FlxG;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
+class TutorialRobbieJohalMixSong extends Song
+{
+  public function new()
+  {
+    super('tutorial',
+      {
+        variation: 'robbie'
+      });
+  }
+
+  override function onUpdate(e)
+  {
+    super.onUpdate(e);
+
+    if (FlxG.state is PlayState)
+    {
+      if (Conductor.instance.currentBeat == 104) PlayState.instance.camGame.fade(0xFF000000, 0.001, false);
+    }
+  }
+
+  public override function isSongNew(currentDifficulty:String, currentVariation:String):Bool
+  {
+    if (currentVariation == 'robbie') return !Save.instance.hasBeatenSong(this.id, null, this.variation);
+
+    return false;
+  }
+}

@@ -1,0 +1,35 @@
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.ui.options.OptionsState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.mainmenu.MainMenuState;
+import haxe.Json;
+
+class CashMechanicOption extends Module 
+{
+	public function new() 
+	{
+		super('CashMechanicOption');
+	}
+
+	override function onUpdate(event:UpdateScriptEvent) 
+	{
+		super.onUpdate(event);
+	}
+
+	public function onStateChangeEnd(event:StateChangeScriptEvent) 
+	{
+		if (Std.isOfType(event.targetState, OptionsState)) 
+		{
+			if (event.targetState.optionsCodex.pages.get("preferences") != null) 
+			{
+				event.targetState.optionsCodex.pages.get("preferences").createPrefItemCheckbox('Cash Mechanic', "If enabled, you can get Cash from beating any of the Real Estate Rumble songs.", function(cashMechanicRER:Bool):Void {
+							RealEstateRumbleSave.realEstateRumbleSave.data.cashMechanicRER = cashMechanicRER;
+							RealEstateRumbleSave.flush;
+					}, RealEstateRumbleSave.realEstateRumbleSave.data.cashMechanicRER);
+			}
+		}
+	}
+}

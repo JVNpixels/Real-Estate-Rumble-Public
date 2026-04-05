@@ -1,0 +1,76 @@
+import funkin.modding.module.Module;
+import flixel.FlxG;
+import funkin.play.PlayState;
+import funkin.save.Save;
+
+class RERCashMechanic extends Module
+{
+	var cashSongs:Array<String> =
+	[
+		"RE/MAX",
+		"Open House",
+		"Sold!",
+		"RE/MAX Erect",
+		"Open House Erect",
+		"Sold! Erect",
+		"RE/MAX (Pico Mix)",
+		"Open House (Pico Mix)",
+		"Sold! (Pico Mix)",
+		"RE/MAX Erect (Pico Mix)",
+		"Open House Erect (Pico Mix)",
+		"Sold! Erect (Pico Mix)",
+		"Katronis",
+		"Mortgage",
+		"Mortgage (Beta Mix)",
+		"For Lease",
+		"Surrey Jack",
+		"Tutorial (Mike Marfori Mix)",
+		"Tutorial (Scott Moe Mix)",
+		"Tutorial (Robbie Johal Mix)",
+		"Bopeebo (Mike Marfori Mix)",
+		"Bopeebo (Scott Moe Mix)",
+		"Bopeebo (Robbie Johal Mix)",
+		"Fresh (Mike Marfori Mix)",
+		"Fresh (Scott Moe Mix)",
+		"Fresh (Robbie Johal Mix)",
+		"DadBattle (Mike Marfori Mix)",
+		"DadBattle (Scott Moe Mix)",
+		"DadBattle (Robbie Johal Mix)",
+		"Spookeez (Mike Marfori Mix)",
+		"Spookeez (Scott Moe Mix)",
+		"Spookeez (Robbie Johal Mix)",
+		"South (Mike Marfori Mix)",
+		"South (Scott Moe Mix)",
+		"South (Robbie Johal Mix)"
+	];
+	
+	public function new() 
+	{
+		super('rer-cash-mechanic');
+	}
+
+	function onSongEnd(event:ScriptEvent) 
+	{
+		super.onSongEnd(event);
+
+		if (event.eventCanceled || PlayState.instance.isMinimalMode) return;
+
+		if (FlxG.state is PlayState)
+		{
+			if (cashSongs.contains(PlayState.instance.currentChart.songName))
+			{
+				if (RealEstateRumbleSave.cashMechanicEnabled())
+				{
+					if (RealEstateRumbleSave.realEstateRumbleSave.data.rerCash == null)
+					{
+						RealEstateRumbleSave.realEstateRumbleSave.data.rerCash = 0;
+						RealEstateRumbleSave.flush();
+					}
+
+					RealEstateRumbleSave.realEstateRumbleSave.data.rerCash += Math.round(PlayState.instance.songScore);
+					RealEstateRumbleSave.flush();
+				}
+			}
+		}
+	}
+}

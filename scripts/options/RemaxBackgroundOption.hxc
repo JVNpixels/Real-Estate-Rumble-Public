@@ -1,0 +1,35 @@
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.ui.options.OptionsState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.mainmenu.MainMenuState;
+import haxe.Json;
+
+class RemaxBackgroundOption extends Module 
+{
+	public function new() 
+	{
+		super('RemaxBackgroundOption');
+	}
+
+	override function onUpdate(event:UpdateScriptEvent) 
+	{
+		super.onUpdate(event);
+	}
+
+	public function onStateChangeEnd(event:StateChangeScriptEvent) 
+	{
+		if (Std.isOfType(event.targetState, OptionsState)) 
+		{
+			if (event.targetState.optionsCodex.pages.get("preferences") != null) 
+			{
+				event.targetState.optionsCodex.pages.get("preferences").createPrefItemCheckbox('RE/MAX Background', "If enabled, the custom Real Estate Rumble background will show in the Main Menu.", function(rerBg:Bool):Void {
+							RealEstateRumbleSave.realEstateRumbleSave.data.rerBg = rerBg;
+							RealEstateRumbleSave.flush;
+					}, RealEstateRumbleSave.realEstateRumbleSave.data.rerBg);
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+import funkin.Paths;
+import flixel.FlxSprite;
+import funkin.Conductor;
+import flixel.FlxG;
+import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.ui.FlxBar;
+import flixel.math.FlxMath;
+import flixel.util.FlxStringUtil;
+import flixel.text.FlxTextBorderStyle;
+import funkin.Preferences;
+import flixel.util.FlxColor;
+
+class SoldErectJumpscareModule extends Module
+{
+    public var robbieJohalJumpscare:FlxSprite = new FlxSprite();
+
+    function new()
+    {
+        super("sold-erect-jumpscare");
+    }
+
+    public override function onStateChangeEnd(event:StateChangeScriptEvent)
+    {
+		super.onStateChangeEnd(event);
+
+        if (Std.isOfType(event.targetState, PlayState))
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect")
+            {
+                initRobbieJumpscare();
+            }
+        }
+    }
+
+    function initRobbieJumpscare()
+    {
+        if (FlxG.state is PlayState)
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect")
+            {
+                robbieJohalJumpscare = new FlxSprite();
+                robbieJohalJumpscare.loadGraphic(Paths.image('sold-erect-jumpscare'));
+                robbieJohalJumpscare.cameras = [PlayState.instance.camHUD];
+                robbieJohalJumpscare.screenCenter();
+                robbieJohalJumpscare.zIndex = 1;
+                robbieJohalJumpscare.visible = false;
+                PlayState.instance.add(robbieJohalJumpscare);
+            }
+        }
+    }
+
+    override function onUpdate(event:ScriptEvent)
+    {
+        super.onUpdate(event);
+
+        if (FlxG.state is PlayState)
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect")
+            {
+                if (Conductor.instance.currentBeat == 750)
+                {
+                    PlayState.instance.camGame.fade(0xFF000000, 0.01, false);
+                    robbieJohalJumpscare.visible = true;
+                }
+
+                if (Conductor.instance.currentBeat == 752)
+                {
+                    PlayState.instance.camGame.fade(0xFF000000, 0.01, true);
+                    PlayState.instance.camGame.flash();
+                    robbieJohalJumpscare.visible = false;
+                } 
+            }
+        }
+    }
+}

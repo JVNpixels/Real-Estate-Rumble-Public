@@ -1,0 +1,48 @@
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.util.Constants;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.story.Level;
+
+class RivalKatronisWeek extends Level
+{
+	function new()
+	{
+		super('rival-katronis');
+	}
+
+  override function isVisible():Bool 
+  {
+    return beatenWeekR();
+  }
+
+  override function isUnlocked():Bool 
+  {
+    return beatenWeekR();
+  }
+
+  override function getSongs():Array<String>
+  {
+    var defaultList:Array<String> = super.getSongs();
+    if (Std.isOfType(FlxG.state.subState, FreeplayState)) 
+    {
+      if (!beatenWeekR())
+      {
+        defaultList.remove("katronis");
+        defaultList.remove("mortgage");
+        defaultList.remove("for-lease");
+      } 
+    }
+    return defaultList;
+  }
+
+  public function beatenWeekR():Bool
+  {
+      for (diff in Constants.DEFAULT_DIFFICULTY_LIST_FULL)
+      {
+          if ((Save.instance.getLevelScore('real-estate', diff)?.score ?? 0) > 0) return true;
+      }
+
+      return false;
+  }
+}

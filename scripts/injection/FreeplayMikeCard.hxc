@@ -1,0 +1,224 @@
+import funkin.ui.freeplay.BGScrollingText;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.freeplay.backcards.BackingCard;
+import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxSpriteUtil;
+import funkin.ui.freeplay.charselect.PlayableCharacter;
+import funkin.data.freeplay.player.PlayerRegistry;
+import flixel.FlxG;
+import funkin.Conductor;
+
+class MikeCard extends BackingCard
+{
+  public var list:BGScrollingText;
+  public var mike:BGScrollingText;
+  public var santa:BGScrollingText;
+  public var master:BGScrollingText;
+  public var www:BGScrollingText;
+  public var redBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/mike/backing'));
+  public var mikeDJ = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/mike/mikeDJ'));
+
+  var glow:FlxSprite;
+  var glowDark:FlxSprite;
+
+  public override function applyExitMovers(?exitMovers:FreeplayState.ExitMoverData, ?exitMoversCharSel:FreeplayState.ExitMoverData):Void
+  {
+    super.applyExitMovers(exitMovers, exitMoversCharSel);
+    if (exitMovers == null || exitMoversCharSel == null) return;
+    exitMovers.set([list],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([mike],
+      {
+        x: -mike.width * 2,
+        y: mike.y,
+        speed: 0.4,
+        wait: 0
+      });
+    exitMovers.set([santa],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([master],
+      {
+        x: -master.width * 2,
+        speed: 0.5,
+      });
+    exitMovers.set([www],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4
+      });
+
+    exitMoversCharSel.set([list, mike, santa, master, www],
+      {
+        y: -60,
+        speed: 0.8,
+        wait: 0.1
+      });
+  }
+
+  public override function enterCharSel():Void
+  {
+    FlxTween.tween(mike, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(master, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(list, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(www, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(santa, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+  }
+
+  public override function new()
+  {
+    super("mike");
+
+    redBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/mike/backing'));
+    var player = PlayerRegistry.instance.fetchEntry(this.currentCharacter);
+    mike = new BGScrollingText(0, 235, "HI MY NAME IS MIKE MARFORI", FlxG.width, false, 60);
+    master = new BGScrollingText(0, 385, "MASTER NEGOTIATOR", FlxG.width / 2, false, 60);
+    list = new BGScrollingText(0, 160, "LIST WITH MIKE 604-722-0099", FlxG.width, true, 43);
+    www = new BGScrollingText(0, 455, "WWW.MIKEMARFORI.COM", FlxG.width, true, 43);
+    santa = new BGScrollingText(0, 315, "I'M GOING TO GIVE LIKE SANTA AND YOU'RE GOING TO SAVE LIKE SCROOGE", FlxG.width / 2, true, 43);
+
+    mikeDJ.loadGraphic(Paths.image('freeplay/backingCards/mike/mikeDJ'));
+  }
+
+  public override function onCreate(event:ScriptEvent):Void
+  {
+    FlxTween.tween(redBack, {x: 0}, 0.6, {ease: FlxEase.quartOut});
+    add(redBack);
+
+    confirmTextGlow.blend = 0;
+    confirmTextGlow.visible = false;
+
+    confirmGlow.blend = 0;
+
+    confirmGlow.visible = false;
+    confirmGlow2.visible = false;
+
+    confirmGlow.color = 0xFFFF0000;
+    confirmGlow2.color = 0xFFFF0000;
+
+    add(confirmGlow2);
+    add(confirmGlow);
+
+    //add(confirmTextGlow);
+
+    //add(backingTextYeah);
+
+    cardGlow.blend = 0;
+    cardGlow.visible = false;
+
+    list.visible = false;
+    mike.visible = false;
+    santa.visible = false;
+    master.visible = false;
+    www.visible = false;
+
+    list.funnyColor = 0xFFFFFFFF;
+    list.speed = 6.8;
+    add(list);
+
+    mike.funnyColor = 0xFFFFFFFF;
+    mike.speed = -3.8;
+    add(mike);
+
+    santa.speed = 3.5;
+    add(santa);
+
+    master.funnyColor = 0xFFFFFFFF;
+    master.speed = -3.8;
+    add(master);
+
+    www.funnyColor = 0xFFFFFFFF;
+    www.speed = 6.8;
+    add(www);
+
+    glowDark = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glowDark.blend = 9;
+    add(glowDark);
+
+    glow = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glow.blend = 0;
+    add(glow);
+
+    glowDark.visible = false;
+    glow.visible = false;
+    
+    cardGlow.color = 0xFFFF0000;
+    add(cardGlow);
+
+    add(mikeDJ);
+    mikeDJ.scale.set(0.65, 0.65);
+    mikeDJ.x = -135;
+    mikeDJ.y = 240;
+  }
+
+  var beatFreq:Int = 1;
+  var beatFreqList:Array<Int> = [1, 2, 4, 8];
+
+  public override function beatHit():Void
+  {
+    // increases the amount of beats that need to go by to pulse the glow because itd flash like craazy at high bpms.....
+    beatFreq = beatFreqList[Math.floor(Conductor.instance.bpm / 140)];
+
+    if (Conductor.instance.currentBeat % beatFreq != 0) return;
+    FlxTween.cancelTweensOf(glow);
+    FlxTween.cancelTweensOf(glowDark);
+
+    glow.alpha = 0.8;
+    FlxTween.tween(glow, {alpha: 0}, 16 / 24, {ease: FlxEase.quartOut});
+    glowDark.alpha = 0;
+    FlxTween.tween(glowDark, {alpha: 0.6}, 18 / 24, {ease: FlxEase.quartOut});
+  }
+
+  public override function introDone():Void
+  {
+    super.introDone();
+    list.visible = true;
+    mike.visible = true;
+    santa.visible = true;
+    master.visible = true;
+    www.visible = true;
+    mikeDJ.visible = true;
+  }
+
+  public override function confirm():Void
+  {
+    super.confirm();
+    // FlxTween.color(bgDad, 0.33, 0xFFFFFFFF, 0xFF555555, {ease: FlxEase.quadOut});
+
+    glowDark.visible = false;
+    glow.visible = false;
+    mikeDJ.loadGraphic(Paths.image('freeplay/backingCards/mike/mikeDJ-accept'));
+  }
+
+  public override function disappear():Void
+  {
+    super.disappear();
+
+    list.visible = false;
+    mike.visible = false;
+    santa.visible = false;
+    master.visible = false;
+    www.visible = false;
+    glowDark.visible = false;
+    glow.visible = false;
+    mikeDJ.visible = false;
+
+    FlxTween.tween(redBack, {alpha: 0}, 0.33, {ease: FlxEase.quadOut});
+    FlxTween.tween(redBack, {x: -800}, 0.33, {ease: FlxEase.quadOut});
+  }
+
+  public override function onUpdate(event:ScriptEvent):Void
+  {
+    super.onUpdate(event);
+
+    if (FlxG.state.subState.controls.DEBUG_CHART) mikeDJ.loadGraphic(Paths.image('freeplay/backingCards/mike/mikeDJ-accept'));
+    if (FlxG.state.subState.controls.FREEPLAY_CHAR_SELECT) mikeDJ.loadGraphic(Paths.image('freeplay/backingCards/mike/mikeDJ-csTransition'));
+  }
+}

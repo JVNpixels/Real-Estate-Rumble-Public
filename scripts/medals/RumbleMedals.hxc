@@ -1,0 +1,113 @@
+import funkin.modding.module.Module;
+import flixel.FlxG;
+import funkin.Paths;
+import flixel.util.FlxTimer;
+import funkin.util.Constants;
+import funkin.save.Save;
+import flixel.graphics.FlxGraphic;
+import openfl.display.BitmapData;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.save.Save;
+import funkin.data.story.level.LevelRegistry;
+#if !mobile
+import funkin.util.plugins.NewgroundsMedalPlugin as NGMedal;
+#end
+
+class RumbleMedals extends Module
+{
+	var surreyMedalData:Array<Dynamic> = [2021, "Welcome to Surrey!", Paths.image("medals/welcomeToSurrey")];
+	var rivalMedalData:Array<Dynamic> = [100, "WE/WIN", Paths.image("medals/weWin")];
+	var yoMedalData:Array<Dynamic> = [420, "Yo!", Paths.image("medals/yo")];
+
+	var secondPropertyMedalData:Array<Dynamic> = [9999, "A Second Property", Paths.image("medals/aSecondProperty")];
+	var pointProvenMedalData:Array<Dynamic> = [100, "Point Proven", Paths.image("medals/pointProven")];
+
+	var masterNegotiatorMedalData:Array<Dynamic> = [500, "Master Negotiator", Paths.image("medals/masterNegotiator")];
+
+	public function new() 
+	{
+		super('RumbleMedals');
+	}
+
+	function onSongEnd(event:ScriptEvent) 
+	{
+		super.onSongEnd(event);
+
+		if (event.eventCanceled || PlayState.instance.isMinimalMode) return;
+
+		if (FlxG.state is PlayState)
+		{
+			if (PlayStatePlaylist.isStoryMode)
+			{
+				var playlist = LevelRegistry.instance.fetchEntry(PlayStatePlaylist.campaignId).getSongs();
+
+				if (PlayStatePlaylist.isStoryMode && !hasBeatenLevel('real-estate', ['easy', 'normal', 'hard']) && PlayStatePlaylist.campaignId == 'real-estate' && playlist[playlist.length - 1] == PlayState.instance.currentSong.id) 
+				{
+					new FlxTimer().start(0.6, _ -> {
+						giveFakeMedal(surreyMedalData[0], surreyMedalData[1], surreyMedalData[2]);
+					});
+				}
+
+				if (PlayStatePlaylist.isStoryMode && !hasBeatenLevel('rival-katronis', ['easy', 'normal', 'hard']) && PlayStatePlaylist.campaignId == 'rival-katronis' && playlist[playlist.length - 1] == PlayState.instance.currentSong.id) 
+				{
+					new FlxTimer().start(0.6, _ -> {
+						giveFakeMedal(rivalMedalData[0], rivalMedalData[1], rivalMedalData[2]);
+					});
+				}
+
+				if (PlayStatePlaylist.isStoryMode && !hasBeatenLevel('real-estate', ['erect', 'nightmare']) && PlayStatePlaylist.campaignId == 'real-estate' && playlist[playlist.length - 1] == PlayState.instance.currentSong.id) 
+				{
+					new FlxTimer().start(0.6, _ -> {
+						giveFakeMedal(secondPropertyMedalData[0], secondPropertyMedalData[1], secondPropertyMedalData[2]);
+					});
+				}
+
+				if (PlayStatePlaylist.isStoryMode && !hasBeatenLevel('surrey-jack', ['easy', 'normal', 'hard']) && PlayStatePlaylist.campaignId == 'surrey-jack' && playlist[playlist.length - 1] == PlayState.instance.currentSong.id) 
+				{
+					new FlxTimer().start(0.6, _ -> {
+						giveFakeMedal(yoMedalData[0], yoMedalData[1], yoMedalData[2]);
+					});
+				}
+			} else {
+				if (PlayState.instance.currentVariation == "mike" || PlayState.instance.currentVariation == "scott" || PlayState.instance.currentVariation == "robbie")
+				{
+					new FlxTimer().start(0.6, _ -> {
+						giveFakeMedal(masterNegotiatorMedalData[0], masterNegotiatorMedalData[1], masterNegotiatorMedalData[2]);
+					});
+				}
+			}
+		}
+	}
+
+	public function hasBeatenLevel(id:String, diffList:Array<String>) {
+
+		if (diffList == null) diffList = ['easy', 'normal', 'hard', 'erect', 'nightmare'];
+
+		for (difficulty in diffList) 
+		{
+			var score = Save.instance.getLevelScore(id, difficulty);
+
+			if (score != null) 
+			{
+				if (score.score > 0)
+				{
+					return true;
+				} else {
+					continue;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public static function giveFakeMedal(points:Int, title:String, graphic:String) 
+	{
+		var medalGraphic:FlxGraphic;
+		var image = Assets.getBitmapData(graphic);
+		medalGraphic = FlxGraphic.fromBitmapData(image);
+		medalGraphic.persist = true;
+		NGMedal.play(points, title, medalGraphic);
+	}
+}

@@ -1,0 +1,24 @@
+import funkin.play.song.Song;
+import funkin.Conductor;
+import funkin.play.PlayState;
+
+class DadBattleScottMoeMixSong extends Song
+{
+  public function new()
+  {
+    super('dadbattle',
+      {
+        variation: 'scott'
+      });
+  }
+
+    override function onNoteHit(event:UpdateScriptEvent) 
+    {
+        super.onNoteHit(event);
+
+        if (Conductor.instance.currentBeat > 230 && Conductor.instance.currentBeat < 247) // Between Beat 231 - 248
+        {
+            if (PlayState.instance.opponentStrumline.getNotesMayHit().contains(event.note)) event.cancel();
+        }
+    }
+}

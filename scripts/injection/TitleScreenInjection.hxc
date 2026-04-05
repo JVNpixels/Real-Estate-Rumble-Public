@@ -1,0 +1,124 @@
+import flixel.FlxG;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.title.TitleState;
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import funkin.Paths;
+import funkin.ui.AtlasText.*;
+import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import funkin.audio.FunkinSound;
+import funkin.Conductor;
+
+class TitleScreenInjection extends Module
+{
+  var started:Bool = false;
+  var announced:Bool = false;
+
+  public var rumbleText:AtlasText =  new AtlasText(0, 0, "", "bold");
+  public var blackOverlay:FlxSprite = new FlxSprite();
+
+  public var camTween:Null<FlxTween> = null;
+
+  var enabled:Bool = true;
+
+  public function new()
+  {
+    super('title-screen-injection');
+  }
+
+  override function onUpdate(event:UpdateScriptEvent):Void
+  {
+    super.onUpdate(event);
+
+    enabled = RealEstateRumbleSave.customTitleScreenEnabled();
+
+    if (enabled)
+    {
+      if (FlxG.state is TitleState)
+      {
+        if (!FlxG.state.initialized)
+        {
+          if (Conductor.instance.currentBeat == 1)
+          {
+            FlxG.state.ngSpr.loadGraphic(Paths.image('remax_logo'));
+            FlxG.state.ngSpr.scale.set(0.75, 0.75);
+            FlxG.state.ngSpr.screenCenter(0x01);
+            FlxG.state.ngSpr.x += 40;
+            FlxG.state.deleteCoolText();
+            FlxG.state.createCoolText(["The Rumblin'", "Teamuh"]);
+          } 
+
+          if (Conductor.instance.currentBeat == 3)
+          {
+            FlxG.state.deleteCoolText();
+            FlxG.state.createCoolText(["The Rumblin'", "Teamuh", "\nBrings to the market"]);
+          }
+
+          if (Conductor.instance.currentBeat == 5)
+          {
+            FlxG.state.deleteCoolText();
+            FlxG.state.createCoolText(['In association', 'with']);
+          }
+
+          if (Conductor.instance.currentBeat == 7)
+          {
+            FlxG.state.deleteCoolText();
+            FlxG.state.createCoolText(['In association', 'with', 'REMAX']);
+          }
+
+          if (Conductor.instance.currentBeat == 12) FlxG.state.createCoolText([""]);
+          if (Conductor.instance.currentBeat == 13) FlxG.state.createCoolText(["real"]);
+          if (Conductor.instance.currentBeat == 14) FlxG.state.createCoolText(["\nestate"]);
+          if (Conductor.instance.currentBeat == 15) FlxG.state.createCoolText(["\n\nrumble"]);
+
+          if (!FlxG.state.cheatActive)
+          {
+            if (Conductor.instance.currentBeat == 28)
+            {
+              if (!announced)
+              {
+                announced = true;
+                blackOverlay.loadGraphic(Paths.image('titleScreenBlackImage'));
+                blackOverlay.alpha = 0;
+                FlxG.state.add(blackOverlay);
+                rumbleText.alpha = 0;
+                rumbleText.text = "Let's get ready to... RUMBLE!";
+                rumbleText.screenCenter();
+                rumbleText.scale.set(0.85, 0.85);
+                FlxG.state.add(rumbleText);
+                FlxTween.tween(blackOverlay, {alpha: 0.5}, 0.75, {ease: FlxEase.quartOut});
+                FlxTween.tween(rumbleText, {alpha: 1}, 0.75, {ease: FlxEase.quartOut});
+              }
+            } 
+
+            if (Conductor.instance.currentBeat == 32)
+            {
+              FlxG.state.remove(rumbleText);
+              FlxG.state.remove(blackOverlay);
+              FlxG.camera.flash();
+            } 
+          }
+        }
+      }
+    }
+  }
+
+  override function onBeatHit(event:ScriptEvent):Void
+  {
+    super.onBeatHit(event);
+
+    if (FlxG.state is TitleState)
+    {
+      if (enabled)
+      {
+        FlxG.camera.zoom += 0.0375;
+        if (camTween != null) camTween.cancel();
+        camTween = FlxTween.tween(FlxG.camera, {zoom: 1}, 0.75, {ease: FlxEase.quartOut});
+      }
+    }
+  }
+}

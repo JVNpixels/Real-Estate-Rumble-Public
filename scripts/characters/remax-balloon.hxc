@@ -1,0 +1,83 @@
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.audio.FunkinSound;
+import funkin.play.character.SparrowCharacter;
+import funkin.play.GameOverSubState;
+import funkin.play.PlayState;
+import funkin.Preferences;
+import funkin.util.Constants;
+import funkin.util.HapticUtil;
+import funkin.FunkinMemory;
+
+class RemaxBalloonCharacter extends SparrowCharacter
+{
+  var balloonTime:Bool = false;
+
+  var storedX:Float = -168.0;
+  var storedY:Float = 322.0;
+
+  var xTween:FlxTween;
+  var yTween:FlxTween;
+
+  function new()
+  {
+    super('remax-balloon');
+  }
+
+  function onCreate(event:ScriptEvent)
+  {
+    super.onCreate(event);
+
+    if (FlxG.state is PlayState)
+    {
+      if (PlayState.instance.currentStage.getDad() != null)
+      {
+        storedX = PlayState.instance.currentStage.getDad().x;
+        storedY = PlayState.instance.currentStage.getDad().y;
+      }
+    }
+  }
+
+  function onSongStart(event:HitNoteScriptEvent)
+  {
+    super.onSongStart(event);
+
+    if (!balloonTime)
+    {
+      balloonTime = true;
+      xTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {x: PlayState.instance.currentStage.getDad().x + 300}, 1.4, {ease: FlxEase.quadInOut, type: 4, startDelay: 0.35});
+      yTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {y: PlayState.instance.currentStage.getDad().y + 100}, 0.7, {ease: FlxEase.quadInOut, type: 4});
+    }
+  }
+
+  function onStateChangeEnd(event:ScriptEvent)
+  {
+    super.onStateChangeEnd(event);
+
+    FlxTween.cancelTweensOf(PlayState.instance.currentStage.getDad(), ['x', 'y']);
+    xTween.cancel();
+    yTween.cancel();
+    balloonTime = false;
+  }
+
+  function onSongRetry(event:ScriptEvent)
+  {
+    super.onSongRetry(event);
+
+    FlxTween.cancelTweensOf(PlayState.instance.currentStage.getDad(), ['x', 'y']);
+    xTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {x: storedX}, 2, {ease: FlxEase.expoOut, type: 8});
+    yTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {y: storedY}, 2, {ease: FlxEase.expoOut, type: 8});
+    balloonTime = false;
+  }
+
+  function onGameOver(event:ScriptEvent)
+  {
+    super.onGameOver(event);
+
+    FlxTween.cancelTweensOf(PlayState.instance.currentStage.getDad(), ['x', 'y']);
+    xTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {x: storedX}, 2, {ease: FlxEase.expoOut, type: 8});
+    yTween = FlxTween.tween(PlayState.instance.currentStage.getDad(), {y: storedY}, 2, {ease: FlxEase.expoOut, type: 8});
+    balloonTime = false;
+  }
+}

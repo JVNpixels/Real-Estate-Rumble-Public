@@ -1,0 +1,224 @@
+import funkin.ui.freeplay.BGScrollingText;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.freeplay.backcards.BackingCard;
+import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxSpriteUtil;
+import funkin.ui.freeplay.charselect.PlayableCharacter;
+import funkin.data.freeplay.player.PlayerRegistry;
+import flixel.FlxG;
+import funkin.Conductor;
+
+class ScottCard extends BackingCard
+{
+  public var teamuh:BGScrollingText;
+  public var bublys:BGScrollingText;
+  public var moeket:BGScrollingText;
+  public var contract:BGScrollingText;
+  public var thirty:BGScrollingText;
+  public var blueBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/scott/backing'));
+  public var scottDJ = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/scott/scottDJ'));
+
+  var glow:FlxSprite;
+  var glowDark:FlxSprite;
+
+  public override function applyExitMovers(?exitMovers:FreeplayState.ExitMoverData, ?exitMoversCharSel:FreeplayState.ExitMoverData):Void
+  {
+    super.applyExitMovers(exitMovers, exitMoversCharSel);
+    if (exitMovers == null || exitMoversCharSel == null) return;
+    exitMovers.set([teamuh],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([bublys],
+      {
+        x: -bublys.width * 2,
+        y: bublys.y,
+        speed: 0.4,
+        wait: 0
+      });
+    exitMovers.set([moeket],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([contract],
+      {
+        x: -contract.width * 2,
+        speed: 0.5,
+      });
+    exitMovers.set([thirty],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4
+      });
+
+    exitMoversCharSel.set([teamuh, bublys, moeket, contract, thirty],
+      {
+        y: -60,
+        speed: 0.8,
+        wait: 0.1
+      });
+  }
+
+  public override function enterCharSel():Void
+  {
+    FlxTween.tween(bublys, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(contract, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(teamuh, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(thirty, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(moeket, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+  }
+
+  public override function new()
+  {
+    super("scott");
+
+    blueBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/scott/backing'));
+    var player = PlayerRegistry.instance.fetchEntry(this.currentCharacter);
+    bublys = new BGScrollingText(0, 235, "PINEAPPLE BUBLY'S ON THE BEACH, AM I RIGHT?", FlxG.width * 2, false, 60);
+    contract = new BGScrollingText(0, 385, "NEVER SIGN A LONG TERM CONTRACT", FlxG.width, false, 60);
+    teamuh = new BGScrollingText(0, 160, "HEY GUYS SCOTT MOE HERE WITH THE MOE REAL ESTATE TEAMUH", FlxG.width, true, 43);
+    thirty = new BGScrollingText(0, 455, "IF YOU'RE NOT HAPPY AFTER WORKING WITH US AFTER 30 DAYS, YOU'RE OUT!", FlxG.width, true, 43);
+    moeket = new BGScrollingText(0, 315, "MOEKET UPDATING...", FlxG.width, true, 43);
+
+    scottDJ.loadGraphic(Paths.image('freeplay/backingCards/scott/scottDJ'));
+  }
+
+  public override function onCreate(event:ScriptEvent):Void
+  {
+    FlxTween.tween(blueBack, {x: 0}, 0.6, {ease: FlxEase.quartOut});
+    add(blueBack);
+
+    confirmTextGlow.blend = 0;
+    confirmTextGlow.visible = false;
+
+    confirmGlow.blend = 0;
+
+    confirmGlow.visible = false;
+    confirmGlow2.visible = false;
+
+    confirmGlow.color = 0xFF0000FF;
+    confirmGlow2.color = 0xFF0000FF;
+
+    add(confirmGlow2);
+    add(confirmGlow);
+
+    //add(confirmTextGlow);
+
+    //add(backingTextYeah);
+
+    cardGlow.blend = 0;
+    cardGlow.visible = false;
+
+    teamuh.visible = false;
+    bublys.visible = false;
+    moeket.visible = false;
+    contract.visible = false;
+    thirty.visible = false;
+
+    teamuh.funnyColor = 0xFFFFFFFF;
+    teamuh.speed = 6.8;
+    add(teamuh);
+
+    bublys.funnyColor = 0xFFFFFFFF;
+    bublys.speed = -3.8;
+    add(bublys);
+
+    moeket.speed = 3.5;
+    add(moeket);
+
+    contract.funnyColor = 0xFFFFFFFF;
+    contract.speed = -3.8;
+    add(contract);
+
+    thirty.funnyColor = 0xFFFFFFFF;
+    thirty.speed = 6.8;
+    add(thirty);
+
+    glowDark = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glowDark.blend = 9;
+    add(glowDark);
+
+    glow = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glow.blend = 0;
+    add(glow);
+
+    glowDark.visible = false;
+    glow.visible = false;
+    
+    cardGlow.color = 0xFF0000FF;
+    add(cardGlow);
+
+    add(scottDJ);
+    scottDJ.scale.set(0.55, 0.55);
+    scottDJ.x = -40;
+    scottDJ.y = 165;
+  }
+
+  var beatFreq:Int = 1;
+  var beatFreqteamuh:Array<Int> = [1, 2, 4, 8];
+
+  public override function beatHit():Void
+  {
+    // increases the amount of beats that need to go by to pulse the glow because itd flash like craazy at high bpms.....
+    beatFreq = beatFreqteamuh[Math.floor(Conductor.instance.bpm / 140)];
+
+    if (Conductor.instance.currentBeat % beatFreq != 0) return;
+    FlxTween.cancelTweensOf(glow);
+    FlxTween.cancelTweensOf(glowDark);
+
+    glow.alpha = 0.8;
+    FlxTween.tween(glow, {alpha: 0}, 16 / 24, {ease: FlxEase.quartOut});
+    glowDark.alpha = 0;
+    FlxTween.tween(glowDark, {alpha: 0.6}, 18 / 24, {ease: FlxEase.quartOut});
+  }
+
+  public override function introDone():Void
+  {
+    super.introDone();
+    teamuh.visible = true;
+    bublys.visible = true;
+    moeket.visible = true;
+    contract.visible = true;
+    thirty.visible = true;
+    scottDJ.visible = true;
+  }
+
+  public override function confirm():Void
+  {
+    super.confirm();
+    // FlxTween.color(bgDad, 0.33, 0xFFFFFFFF, 0xFF555555, {ease: FlxEase.quadOut});
+
+    glowDark.visible = false;
+    glow.visible = false;
+    scottDJ.loadGraphic(Paths.image('freeplay/backingCards/scott/scottDJ-accept'));
+  }
+
+  public override function disappear():Void
+  {
+    super.disappear();
+
+    teamuh.visible = false;
+    bublys.visible = false;
+    moeket.visible = false;
+    contract.visible = false;
+    thirty.visible = false;
+    glowDark.visible = false;
+    glow.visible = false;
+    scottDJ.visible = false;
+
+    FlxTween.tween(blueBack, {alpha: 0}, 0.33, {ease: FlxEase.quadOut});
+    FlxTween.tween(blueBack, {x: -800}, 0.33, {ease: FlxEase.quadOut});
+  }
+
+  public override function onUpdate(event:ScriptEvent):Void
+  {
+    super.onUpdate(event);
+
+    if (FlxG.state.subState.controls.DEBUG_CHART) scottDJ.loadGraphic(Paths.image('freeplay/backingCards/scott/scottDJ-accept'));
+    if (FlxG.state.subState.controls.FREEPLAY_CHAR_SELECT) scottDJ.loadGraphic(Paths.image('freeplay/backingCards/scott/scottDJ-csTransition'));
+  }
+}

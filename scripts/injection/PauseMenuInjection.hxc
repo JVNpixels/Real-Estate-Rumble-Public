@@ -1,0 +1,115 @@
+import StringTools;
+import flixel.FlxG;
+import funkin.Paths;
+import funkin.util.Constants;
+import funkin.util.ReflectUtil;
+import funkin.modding.module.Module;
+import funkin.audio.FunkinSound;
+import funkin.play.PlayState;
+
+class PauseMenuInjection extends Module 
+{
+	var currentState:Dynamic;
+    var metadata:FlxTypedSpriteGroup<FlxText>;
+    var metadataDeaths:FlxText;
+
+	var toonieSongs:Array<String> = 
+	[
+		"RE/MAX",
+		"RE/MAX Erect",
+		"RE/MAX (Pico Mix)",
+		"RE/MAX Erect (Pico Mix)",
+		"Open House",
+		"Open House Erect",
+		"Open House (Pico Mix)",
+		"Open House Erect (Pico Mix)",
+		"Sold!",
+		"Sold! Erect",
+		"Sold! (Pico Mix)",
+		"Sold! Erect (Pico Mix)"
+	];
+
+	var customerSongs:Array<String> = 
+	[
+		"Katronis",
+		"Mortgage",
+		"Mortgage (Beta Mix)",
+		"For Lease",
+		"Tutorial (Mike Marfori Mix)",
+		"Tutorial (Scott Moe Mix)",
+		"Tutorial (Robbie Johal Mix)",
+		"Bopeebo (Mike Marfori Mix)",
+		"Bopeebo (Scott Moe Mix)",
+		"Bopeebo (Robbie Johal Mix)",
+		"Fresh (Mike Marfori Mix)",
+		"Fresh (Scott Moe Mix)",
+		"Fresh (Robbie Johal Mix)",
+		"DadBattle (Mike Marfori Mix)",
+		"DadBattle (Scott Moe Mix)",
+		"DadBattle (Robbie Johal Mix)",
+		"Spookeez (Mike Marfori Mix)",
+		"Spookeez (Scott Moe Mix)",
+		"Spookeez (Robbie Johal Mix)",
+		"South (Mike Marfori Mix)",
+		"South (Scott Moe Mix)",
+		"South (Robbie Johal Mix)"
+	];
+
+	var juniorChickenSongs:Array<String> =
+	[
+		"Surrey Jack"
+	];
+
+	function new() 
+	{
+		super("pause-menu-inject");
+	}
+
+	function onStateChangeEnd() 
+	{
+		super.onStateChangeEnd();
+
+		var daThing = ReflectUtil.getClassNameOf(FlxG.state.subState).split(".");
+
+		currentState = daThing[daThing.length - 1];
+		if (currentState == "PauseSubState") 
+		{	
+			if (toonieSongs.contains(PlayState?.instance?.currentChart.songName))
+			{
+				if (PlayState.instance?.deathCounter == 1)
+				{
+					FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter +  " Toonie Lost";
+				} else {
+					FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter +  " Toonies Lost";
+				}
+			} else if (customerSongs.contains(PlayState?.instance?.currentChart.songName)) {
+				FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter * 100 + " Customers Lost";
+			}
+		}
+	}
+
+	function onUpdate(event) 
+	{
+		super.onUpdate(event);
+
+		var daThing = ReflectUtil.getClassNameOf(FlxG.state.subState).split(".");
+
+		currentState = daThing[daThing.length - 1];
+		if (currentState == "PauseSubState") 
+		{
+			if (toonieSongs.contains(PlayState?.instance?.currentChart.songName))
+			{
+				if (PlayState.instance?.deathCounter == 1)
+				{
+					FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter +  " Toonie Lost";
+				} else {
+					FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter +  " Toonies Lost";
+				}
+			} else if (customerSongs.contains(PlayState?.instance?.currentChart.songName)) {
+				FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter * 100 + " RE/MAX Customers Lost";
+			} else if (juniorChickenSongs.contains(PlayState?.instance?.currentChart.songName)) {
+				FlxG.state.subState.metadataDeaths.text = PlayState.instance?.deathCounter * 64 + " Junior Chickens Taxed"; // 64 is a very specific number, but only we know why...
+			}
+		}
+	}
+}

@@ -1,0 +1,224 @@
+import funkin.ui.freeplay.BGScrollingText;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.freeplay.backcards.BackingCard;
+import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxSpriteUtil;
+import funkin.ui.freeplay.charselect.PlayableCharacter;
+import funkin.data.freeplay.player.PlayerRegistry;
+import flixel.FlxG;
+import funkin.Conductor;
+
+class RobbieCard extends BackingCard
+{
+  public var hello:BGScrollingText;
+  public var tattoo:BGScrollingText;
+  public var never:BGScrollingText;
+  public var serious:BGScrollingText;
+  public var curb:BGScrollingText;
+  public var greyBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/robbie/backing'));
+  public var robbieDJ = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/robbie/robbieDJ'));
+
+  var glow:FlxSprite;
+  var glowDark:FlxSprite;
+
+  public override function applyExitMovers(?exitMovers:FreeplayState.ExitMoverData, ?exitMoversCharSel:FreeplayState.ExitMoverData):Void
+  {
+    super.applyExitMovers(exitMovers, exitMoversCharSel);
+    if (exitMovers == null || exitMoversCharSel == null) return;
+    exitMovers.set([hello],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([tattoo],
+      {
+        x: -tattoo.width * 2,
+        y: tattoo.y,
+        speed: 0.4,
+        wait: 0
+      });
+    exitMovers.set([never],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4,
+      });
+    exitMovers.set([serious],
+      {
+        x: -serious.width * 2,
+        speed: 0.5,
+      });
+    exitMovers.set([curb],
+      {
+        x: FlxG.width * 2,
+        speed: 0.4
+      });
+
+    exitMoversCharSel.set([hello, tattoo, never, serious, curb],
+      {
+        y: -60,
+        speed: 0.8,
+        wait: 0.1
+      });
+  }
+
+  public override function enterCharSel():Void
+  {
+    FlxTween.tween(tattoo, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(serious, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(hello, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(curb, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+    FlxTween.tween(never, {speed: 0}, 0.8, {ease: FlxEase.sineIn});
+  }
+
+  public override function new()
+  {
+    super("robbie");
+
+    greyBack = new FlxSprite().loadGraphic(Paths.image('freeplay/backingCards/robbie/backing'));
+    var player = PlayerRegistry.instance.fetchEntry(this.currentCharacter);
+    tattoo = new BGScrollingText(0, 235, "HEY YOU CAN TATTOO THAT NUMBER ON MY NUMBER", FlxG.width * 2, false, 60);
+    serious = new BGScrollingText(0, 385, "SERIOUS TALK", FlxG.width, false, 60);
+    hello = new BGScrollingText(0, 160, "HELLO IT'S ROBBIE JOHAL", FlxG.width, true, 43);
+    curb = new BGScrollingText(0, 455, "CURB APPEAL 101", FlxG.width, true, 43);
+    never = new BGScrollingText(0, 315, "I'LL NEVER CHANGE IT", FlxG.width, true, 43);
+
+    robbieDJ.loadGraphic(Paths.image('freeplay/backingCards/robbie/robbieDJ'));
+  }
+
+  public override function onCreate(event:ScriptEvent):Void
+  {
+    FlxTween.tween(greyBack, {x: 0}, 0.6, {ease: FlxEase.quartOut});
+    add(greyBack);
+
+    confirmTextGlow.blend = 0;
+    confirmTextGlow.visible = false;
+
+    confirmGlow.blend = 0;
+
+    confirmGlow.visible = false;
+    confirmGlow2.visible = false;
+
+    confirmGlow.loadGraphic(Paths.image('freeplay/backingCards/robbie/confirmGlow-robbie'));
+    confirmGlow2.loadGraphic(Paths.image('freeplay/backingCards/robbie/confirmGlow2-robbie'));
+
+    add(confirmGlow2);
+    add(confirmGlow);
+
+    //add(confirmTextGlow);
+
+    //add(backingTextYeah);
+
+    cardGlow.blend = 0;
+    cardGlow.visible = false;
+
+    hello.visible = false;
+    tattoo.visible = false;
+    never.visible = false;
+    serious.visible = false;
+    curb.visible = false;
+
+    hello.funnyColor = 0xFFFFFFFF;
+    hello.speed = 6.8;
+    add(hello);
+
+    tattoo.funnyColor = 0xFFFFFFFF;
+    tattoo.speed = -3.8;
+    add(tattoo);
+
+    never.speed = 3.5;
+    add(never);
+
+    serious.funnyColor = 0xFFFFFFFF;
+    serious.speed = -1.8;
+    add(serious);
+
+    curb.funnyColor = 0xFFFFFFFF;
+    curb.speed = 6.8;
+    add(curb);
+
+    glowDark = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glowDark.blend = 9;
+    add(glowDark);
+
+    glow = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
+    glow.blend = 0;
+    add(glow);
+
+    glowDark.visible = false;
+    glow.visible = false;
+
+    cardGlow.loadGraphic(Paths.image('freeplay/backingCards/robbie/cardGlow-robbie'));
+    add(cardGlow);
+
+    add(robbieDJ);
+    robbieDJ.scale.set(0.55, 0.55);
+    robbieDJ.x = -40;
+    robbieDJ.y = 165;
+  }
+
+  var beatFreq:Int = 1;
+  var beatFreqhello:Array<Int> = [1, 2, 4, 8];
+
+  public override function beatHit():Void
+  {
+    // increases the amount of beats that need to go by to pulse the glow because itd flash like craazy at high bpms.....
+    beatFreq = beatFreqhello[Math.floor(Conductor.instance.bpm / 140)];
+
+    if (Conductor.instance.currentBeat % beatFreq != 0) return;
+    FlxTween.cancelTweensOf(glow);
+    FlxTween.cancelTweensOf(glowDark);
+
+    glow.alpha = 0.8;
+    FlxTween.tween(glow, {alpha: 0}, 16 / 24, {ease: FlxEase.quartOut});
+    glowDark.alpha = 0;
+    FlxTween.tween(glowDark, {alpha: 0.6}, 18 / 24, {ease: FlxEase.quartOut});
+  }
+
+  public override function introDone():Void
+  {
+    super.introDone();
+    hello.visible = true;
+    tattoo.visible = true;
+    never.visible = true;
+    serious.visible = true;
+    curb.visible = true;
+    robbieDJ.visible = true;
+  }
+
+  public override function confirm():Void
+  {
+    super.confirm();
+    // FlxTween.color(bgDad, 0.33, 0xFFFFFFFF, 0xFF555555, {ease: FlxEase.quadOut});
+
+    glowDark.visible = false;
+    glow.visible = false;
+    robbieDJ.loadGraphic(Paths.image('freeplay/backingCards/robbie/robbieDJ-accept'));
+  }
+
+  public override function disappear():Void
+  {
+    super.disappear();
+
+    hello.visible = false;
+    tattoo.visible = false;
+    never.visible = false;
+    serious.visible = false;
+    curb.visible = false;
+    glowDark.visible = false;
+    glow.visible = false;
+    robbieDJ.visible = false;
+
+    FlxTween.tween(greyBack, {alpha: 0}, 0.33, {ease: FlxEase.quadOut});
+    FlxTween.tween(greyBack, {x: -800}, 0.33, {ease: FlxEase.quadOut});
+  }
+
+  public override function onUpdate(event:ScriptEvent):Void
+  {
+    super.onUpdate(event);
+
+    if (FlxG.state.subState.controls.DEBUG_CHART) robbieDJ.loadGraphic(Paths.image('freeplay/backingCards/robbie/robbieDJ-accept'));
+    if (FlxG.state.subState.controls.FREEPLAY_CHAR_SELECT) robbieDJ.loadGraphic(Paths.image('freeplay/backingCards/robbie/robbieDJ-csTransition'));
+  }
+}

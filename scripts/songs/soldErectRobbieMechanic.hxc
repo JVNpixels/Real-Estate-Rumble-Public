@@ -1,0 +1,163 @@
+import funkin.play.song.Song;
+import funkin.modding.module.Module;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.util.Constants;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+import flixel.addons.display.FlxBackdrop;
+
+class SoldErectRobbieMechanicModule extends Module 
+{
+    var helloItsRobbieJoj = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+    var helloItsRobbieJojTwo = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+    var helloItsRobbieJojThree = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+    var helloItsRobbieJojFour = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+
+    var spawnedAlready:Bool = false;
+
+    public function new() 
+    {
+        super('sold-erect-robbies');
+    }
+
+    function spawnRobbieJoj()
+    {
+        if (!spawnedAlready)
+        {
+            spawnedAlready = true;
+
+            helloItsRobbieJoj = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+            helloItsRobbieJoj.x = 0;
+            helloItsRobbieJoj.y = (FlxG.height - helloItsRobbieJojFour.height) + ((FlxG.height - helloItsRobbieJojFour.height) / 2.3);
+            helloItsRobbieJoj.scale.set(1, 1);
+            helloItsRobbieJoj.velocity.x = -500;
+            helloItsRobbieJoj.zIndex = -500000;
+            helloItsRobbieJoj.cameras = [PlayState.instance?.camHUD];
+
+            helloItsRobbieJojTwo = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+            helloItsRobbieJojTwo.setPosition(0, -150);
+            helloItsRobbieJojTwo.scale.set(1, 1);
+            helloItsRobbieJojTwo.velocity.x = 500;
+            helloItsRobbieJojTwo.flipY = true;
+            helloItsRobbieJojTwo.zIndex = -500000;
+            helloItsRobbieJojTwo.cameras = [PlayState.instance?.camHUD];
+
+            helloItsRobbieJojThree = new FlxBackdrop(Paths.image('robbieDistraction'), 0x10, 0);
+            helloItsRobbieJojThree.setPosition(-125, 0);
+            helloItsRobbieJojThree.scale.set(0.5, 0.5);
+            helloItsRobbieJojThree.velocity.y = -500;
+            helloItsRobbieJojThree.angle = 90;
+            helloItsRobbieJojThree.zIndex = -500000;
+            helloItsRobbieJojThree.cameras = [PlayState.instance?.camHUD];
+
+            helloItsRobbieJojFour = new FlxBackdrop(Paths.image('robbieDistraction'), 0x10, 0);
+            helloItsRobbieJojFour.x = (FlxG.width - helloItsRobbieJojFour.width) + ((FlxG.width - helloItsRobbieJojFour.width) / 6.7);
+            helloItsRobbieJojFour.scale.set(0.5, 0.5);
+            helloItsRobbieJojFour.velocity.y = 500;
+            helloItsRobbieJojFour.angle = -90;
+            helloItsRobbieJojFour.flipX = true;
+            helloItsRobbieJojFour.zIndex = -500000;
+            helloItsRobbieJojFour.cameras = [PlayState.instance?.camHUD];
+
+            PlayState.instance?.insert(0, helloItsRobbieJoj);
+            PlayState.instance?.insert(0, helloItsRobbieJojTwo);
+            PlayState.instance?.insert(0, helloItsRobbieJojThree);
+            PlayState.instance?.insert(0, helloItsRobbieJojFour);
+        }
+    }
+
+    function hideRobbies()
+    {
+        helloItsRobbieJoj.visible = false;
+        helloItsRobbieJojTwo.visible = false;
+        helloItsRobbieJojThree.visible = false;
+        helloItsRobbieJojFour.visible = false;
+    }
+
+    function showRobbies()
+    {
+        helloItsRobbieJoj.visible = true;
+        helloItsRobbieJojTwo.visible = true;
+        helloItsRobbieJojThree.visible = true;
+        helloItsRobbieJojFour.visible = true;
+    }
+
+    override function onBeatHit(e):Void
+    {
+        super.onBeatHit(e);
+
+        if (FlxG.state is PlayState)
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)")
+            {
+                if (Conductor.instance.currentBeat == 4)
+                {
+                    spawnRobbieJoj();
+                    hideRobbies();
+                }
+
+                if (Conductor.instance.currentBeat == 400)
+                {
+                    showRobbies();
+                }
+
+                if (Conductor.instance.currentBeat == 492)
+                {
+                    hideRobbies();
+                }
+
+                if (Conductor.instance.currentBeat == 792)
+                {
+                    showRobbies();
+                }
+
+                if (Conductor.instance.currentBeat == 984)
+                {
+                    hideRobbies();
+                }
+            }
+        }
+
+        helloItsRobbieJoj.flipX = !helloItsRobbieJoj.flipX;
+        helloItsRobbieJojTwo.flipX = !helloItsRobbieJojTwo.flipX;
+        helloItsRobbieJojThree.flipX = !helloItsRobbieJojThree.flipX;
+        helloItsRobbieJojFour.flipX = !helloItsRobbieJojFour.flipX;
+    }
+
+    public override function onSongEnd(event:ScriptEvent)
+    {
+        super.onSongEnd(event);
+        
+        if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)") spawnedAlready = false;
+    }
+
+    public override function onSongRetry(event:ScriptEvent)
+    {
+        super.onGameOver(event);
+        
+        if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)")
+        {
+            hideRobbies();
+            spawnedAlready = false;
+        }
+    }
+
+    public override function onGameOver(event:ScriptEvent)
+    {
+        super.onGameOver(event);
+
+        if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)")
+        {
+            hideRobbies();
+            spawnedAlready = false;
+        }
+    }
+}

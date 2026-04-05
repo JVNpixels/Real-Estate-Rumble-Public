@@ -1,0 +1,102 @@
+import funkin.play.song.Song;
+import funkin.modding.module.Module;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.util.Constants;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+import flixel.util.FlxColor;
+
+class SoldErectCustomEventsModule extends Module 
+{
+    public function new() 
+    {
+        super('sold-erect-events');
+    }
+
+    override function onUpdate(event:UpdateScriptEvent):Void
+    {
+        super.onNoteHit(event);
+
+        if (FlxG.state is PlayState)
+        {
+            if (PlayState.instance.currentChart.songName == "Sold! Erect" || PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)")
+            {
+                if (!PlayState.instance.isPlayerDying)
+                {
+                    if (Conductor.instance.currentBeat == 16)
+                    {
+                        PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                        PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                    }
+
+                    if (Conductor.instance.currentBeat == 400)
+                    {
+                        PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                        PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                    }
+
+                    if (Conductor.instance.currentBeat == 465)
+                    {
+                        PlayState.instance.camGame.fade(0xFF000000, 1, false);
+                        PlayState.instance.camHUD.fade(0xFF000000, 1, false);
+                    }
+
+                    if (Conductor.instance.currentBeat == 492)
+                    {
+                        PlayState.instance.camGame.fade(FlxColor.TRANSPARENT, 1, false);
+                        PlayState.instance.camHUD.fade(FlxColor.TRANSPARENT, 1, false);
+                    }
+
+                    if (Conductor.instance.currentBeat == 496)
+                    {
+                        PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                        PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                    }
+
+                    if (Conductor.instance.currentBeat == 784)
+                    {
+                        if (PlayState.instance.currentChart.songName == "Sold! Erect")
+                        {
+                            FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Erect Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+                        } else if (PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)") {
+                            FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Pico Erect Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+                        }  
+                    }
+
+                    if (Conductor.instance.currentBeat == 792)
+                    {
+                        if (PlayState.instance.currentChart.songName == "Sold! Erect")
+                        {
+                            FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Erect Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+                        } else if (PlayState.instance.currentChart.songName == "Sold! Erect (Pico Mix)") {
+                            FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Pico Erect Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+                        }
+
+                        PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                        PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                    }
+
+                    if (Conductor.instance.currentBeat == 984)
+                    {
+                        PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                        PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                    }
+
+                    if (Conductor.instance.currentBeat == 986)
+                    {
+                        PlayState.instance.camGame.fade(0xFF000000, 1, false);
+                        PlayState.instance.camHUD.fade(0xFF000000, 1, false);
+                    }
+                }
+            }
+        }
+    }
+}

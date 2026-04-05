@@ -1,0 +1,54 @@
+import funkin.modding.module.Module;
+import funkin.data.story.level.LevelRegistry;
+import flixel.FlxG;
+import funkin.ui.story.StoryMenuState;
+import funkin.util.Constants;
+import funkin.play.PlayState;
+import funkin.play.PlayStatePlaylist;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+
+class StoryDifficultyInjection extends Module
+{
+    function new()
+    {
+        super("story-difficulty-injection");
+    }
+
+    function onUpdate(event):Void
+    {
+        super.onUpdate(event);
+
+        if (FlxG.state is StoryMenuState)
+        {
+            if (FlxG.state.currentLevel != null)
+            {
+                if (FlxG.state.currentLevel.id == 'real-estate')
+                {
+                    Constants.DEFAULT_DIFFICULTY_LIST = ['easy', 'normal', 'hard', 'erect', 'nightmare'];
+
+                    FlxG.state.tracklistText.text = 'TRACKS\n\n';
+                    if (FlxG.state.currentDifficultyId == "easy" || FlxG.state.currentDifficultyId == "normal" || FlxG.state.currentDifficultyId == "hard")
+                    {
+                        FlxG.state.tracklistText.text += 'RE/MAX\nOpen House\nSold!';
+                    } else if (FlxG.state.currentDifficultyId == "erect" || FlxG.state.currentDifficultyId == "nightmare") {
+                        FlxG.state.tracklistText.text += 'RE/MAX Erect\nOpen House Erect\nSold! Erect';
+                    }
+                    FlxG.state.tracklistText.screenCenter(0x01);
+                    FlxG.state.tracklistText.x -= (FlxG.width * 0.35);
+                } else {
+                    Constants.DEFAULT_DIFFICULTY_LIST = ['easy', 'normal', 'hard'];
+                    if(!Constants.DEFAULT_DIFFICULTY_LIST.contains(FlxG.state.currentDifficultyId))
+                    FlxG.state.changeDifficulty(0);
+                }
+            }
+        }
+    }
+
+    function onSongLoaded(event:SongLoadScriptEvent):Void
+    {
+        super.onSongLoaded(event);
+
+        if (PlayStatePlaylist.isStoryMode && (PlayState.instance.currentDifficulty == 'erect' || PlayState.instance.currentDifficulty == 'nightmare')) PlayState.instance.currentInstrumental = 'erect';
+    }
+}

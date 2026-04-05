@@ -1,0 +1,61 @@
+import StringTools;
+import flixel.FlxG;
+import funkin.Paths;
+import funkin.util.Constants;
+import funkin.util.ReflectUtil;
+import funkin.modding.module.Module;
+import funkin.audio.FunkinSound;
+import flixel.util.FlxStringUtil;
+import funkin.input.Controls;
+
+class StoryMenuInjection extends Module 
+{
+	var currentState:Dynamic;
+
+	function new() 
+	{
+		super("story-menu-inject");
+	}
+
+	function onStateChangeEnd() 
+	{
+		super.onStateChangeEnd();
+
+		var daThing = ReflectUtil.getClassNameOf(FlxG.state).split(".");
+
+		currentState = daThing[daThing.length - 1];
+		if (currentState == "StoryMenuState") 
+		{	
+			if (FlxG.state.currentLevelId == "real-estate")
+			{
+				if (FlxG.state.currentDifficultyId == "easy" || FlxG.state.currentDifficultyId == "normal" || FlxG.state.currentDifficultyId == "hard") FlxG.state.scoreText.text = 'CASH FOR HOUSE: ' + FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true);
+				if (FlxG.state.currentDifficultyId == "erect" || FlxG.state.currentDifficultyId == "nightmare") FlxG.state.scoreText.text = 'CASH FOR MANSION: ' + FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true);
+			} else if (FlxG.state.currentLevelId == "rival-katronis") {
+				if (FlxG.state.currentDifficultyId == "easy" || FlxG.state.currentDifficultyId == "normal" || FlxG.state.currentDifficultyId == "hard") FlxG.state.scoreText.text = FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true) + " MORE HOUSES SOLD BY RE/MAX";
+			} else if (FlxG.state.currentLevelId == "surrey-jack") {
+				FlxG.state.scoreText.text = FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true) + " JUNIOR CHICKENS EATEN";
+			}
+		}
+	}
+
+	function onUpdate(event) 
+	{
+		super.onUpdate(event);
+
+		var daThing = ReflectUtil.getClassNameOf(FlxG.state).split(".");
+
+		currentState = daThing[daThing.length - 1];
+		if (currentState == "StoryMenuState") 
+		{	
+			if (FlxG.state.currentLevelId == "real-estate")
+			{
+				if (FlxG.state.currentDifficultyId == "easy" || FlxG.state.currentDifficultyId == "normal" || FlxG.state.currentDifficultyId == "hard") FlxG.state.scoreText.text = 'CASH FOR HOUSE: ' + FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true);
+				if (FlxG.state.currentDifficultyId == "erect" || FlxG.state.currentDifficultyId == "nightmare") FlxG.state.scoreText.text = 'CASH FOR MANSION: ' + FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true);
+			} else if (FlxG.state.currentLevelId == "rival-katronis") {
+				if (FlxG.state.currentDifficultyId == "easy" || FlxG.state.currentDifficultyId == "normal" || FlxG.state.currentDifficultyId == "hard") FlxG.state.scoreText.text = FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true) + " MORE HOUSES SOLD BY RE/MAX";
+			} else if (FlxG.state.currentLevelId == "surrey-jack") {
+				FlxG.state.scoreText.text = FlxStringUtil.formatMoney(FlxG.state.highScoreLerp, false, true) + " JUNIOR CHICKENS EATEN";
+			}
+		}
+	}
+}

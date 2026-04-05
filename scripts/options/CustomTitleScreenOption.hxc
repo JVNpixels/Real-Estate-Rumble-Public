@@ -1,0 +1,35 @@
+import funkin.modding.module.Module;
+import funkin.util.ReflectUtil;
+import flixel.FlxG;
+import funkin.save.Save;
+import funkin.ui.options.OptionsState;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.mainmenu.MainMenuState;
+import haxe.Json;
+
+class CustomTitleScreenOption extends Module 
+{
+	public function new() 
+	{
+		super('CustomTitleScreenOption');
+	}
+
+	override function onUpdate(event:UpdateScriptEvent) 
+	{
+		super.onUpdate(event);
+	}
+
+	public function onStateChangeEnd(event:StateChangeScriptEvent) 
+	{
+		if (Std.isOfType(event.targetState, OptionsState)) 
+		{
+			if (event.targetState.optionsCodex.pages.get("preferences") != null) 
+			{
+				event.targetState.optionsCodex.pages.get("preferences").createPrefItemCheckbox('RER Title Screen', "If enabled, the Real Estate Rumble custom title screen will play on bootup every time.", function(customTitleScreenRER:Bool):Void {
+							RealEstateRumbleSave.realEstateRumbleSave.data.customTitleScreenRER = customTitleScreenRER;
+							RealEstateRumbleSave.flush;
+					}, RealEstateRumbleSave.realEstateRumbleSave.data.customTitleScreenRER);
+			}
+		}
+	}
+}

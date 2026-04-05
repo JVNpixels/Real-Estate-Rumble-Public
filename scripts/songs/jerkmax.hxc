@@ -1,0 +1,37 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.save.Save;
+import funkin.play.PlayStatePlaylist;
+import funkin.graphics.shaders.AdjustColorShader;
+
+class JerkmaxModule extends Song 
+{
+    var jerkShader:AdjustColorShader = new AdjustColorShader(0, 0, 0, 0); // Hue, Saturation, Brightness, Contrast.
+
+    public function new() 
+    {
+        super("jerkmax");
+    }
+
+    override function onUpdate(e) 
+    {
+        super.onUpdate(e);
+        
+        PlayState.instance.currentStage.getBoyfriend().shader = jerkShader;
+        PlayState.instance.currentStage.getGirlfriend().shader = jerkShader;
+        PlayState.instance.currentStage.getDad().shader = jerkShader;
+        PlayState.instance.currentStage.getNamedProp("Mike Marforis Bench").shader = jerkShader;
+
+        jerkShader.hue += 10;
+
+        jerkShader.saturation = FlxG.random.int(0, 100);
+    }
+}

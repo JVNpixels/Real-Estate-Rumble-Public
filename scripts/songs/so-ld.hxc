@@ -1,0 +1,138 @@
+import funkin.play.song.Song;
+import funkin.graphics.FunkinCamera;
+import funkin.play.PlayState;
+import funkin.data.event.SongEventRegistry;
+import funkin.Conductor;
+import funkin.play.Countdown;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.addons.display.FlxBackdrop;
+import lime.app.Application;
+
+class SoldModule extends Song 
+{
+    var helloItsRobbieJoj = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+    var spawnedAlready:Bool = false;
+
+    public function new()
+    {
+        super("so-ld");
+    }
+
+    override function onCreate(e)
+    {
+        super.onCreate(e);
+    }
+
+    override function onUpdate(e) 
+    {
+        super.onUpdate(e);
+
+        if (Conductor.instance.currentBeat == 1 && PlayState.instance.currentVariation == "default")
+        {
+            spawnedAlready = false;
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench") PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench').alpha = 1;
+        } else if (Conductor.instance.currentBeat == 1 && PlayState.instance.currentVariation == "pico") {
+            spawnedAlready = false;
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench [Pico]") PlayState.instance.currentStage.getNamedProp('Robbie Johals Pico Bench').alpha = 1;
+        }
+
+        if (Conductor.instance.currentBeat == 16)
+        {
+            if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico") PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+            if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico") PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+        }
+
+        if (Conductor.instance.currentBeat == 208 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 240 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 336 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench'), {alpha: 0.25}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 400 && PlayState.instance.currentVariation == "default")
+        {
+            if (PlayState.instance.currentStage.stageName == "Robbie's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut});
+        }
+
+        if (Conductor.instance.currentBeat == 464)
+        {
+            if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico")
+            {
+                Application.current.window.title = "ROBBIE JOHAL ";
+                PlayState.instance.camGame.flash(0xFFFFFFFF, 1, true);
+                PlayState.instance.camHUD.flash(0xFFFFFFFF, 1, true);
+                spawnRobbieJoj();
+                spawnedAlready = true;
+            }
+        }
+
+        if (Conductor.instance.currentBeat == 528)
+        {
+            if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico") PlayState.instance.camGame.fade(0xFF000000, 1, false);
+            if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico") PlayState.instance.camHUD.fade(0xFF000000, 1, false);
+        }
+    }
+
+    function spawnRobbieJoj()
+    {
+        if (!spawnedAlready)
+        {
+            helloItsRobbieJoj = new FlxBackdrop(Paths.image('robbieDistraction'), 0x01, 0);
+            helloItsRobbieJoj.x = 0;
+            helloItsRobbieJoj.y = (FlxG.height - helloItsRobbieJoj.height) + ((FlxG.height - helloItsRobbieJoj.height) / 7.25);
+            helloItsRobbieJoj.zIndex = 100000;
+            helloItsRobbieJoj.scale.set(1, 1);
+            helloItsRobbieJoj.velocity.x = -500;
+            PlayState.instance?.add(helloItsRobbieJoj);
+            helloItsRobbieJoj.cameras = [PlayState.instance?.camHUD];
+        }
+    }
+
+    override function onBeatHit(e):Void
+    {
+        super.onBeatHit(e);
+
+        helloItsRobbieJoj.flipX = !helloItsRobbieJoj.flipX;
+    }
+
+    override function onSongRetry(event):Void 
+    {
+        super.onSongRetry(event);
+
+        if (PlayState.instance.currentVariation == "default" || PlayState.instance.currentVariation == "pico")
+        {
+           if (PlayState.instance.currentStage.stageName == "Robbie's Bench") FlxTween.tween(PlayState.instance.currentStage.getNamedProp('Robbie Johals Bench'), {alpha: 1}, 0.75, {ease: FlxEase.quadOut}); 
+        } 
+    }
+    
+    public override function listAltInstrumentalIds(difficultyId:String, variationId:String):Array<String>
+    {
+        if (Constants.DEFAULT_DIFFICULTY_LIST_FULL.contains(difficultyId)) 
+	    {
+            switch (variationId) 
+	        {
+                default:
+                    return ['pico'];
+		        case 'pico':
+	  		        return [''];
+                case 'erect':
+                    return ['erectpico'];
+		        case 'erectpico':
+	  		        return ['erect'];
+            }
+        }
+
+        return [];
+    }
+}
