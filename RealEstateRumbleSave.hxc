@@ -1,0 +1,66 @@
+import Std;
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+import funkin.util.tools.StringTools;
+import funkin.util.Constants;
+import flixel.FlxSprite;
+import flixel.util.FlxSave;
+import funkin.audio.FunkinSound;
+import funkin.Paths;
+import funkin.util.TouchUtil;
+
+using StringTools;
+
+class RealEstateRumbleSave extends Module
+{
+	public static var realEstateRumbleSave:FlxSave = new FlxSave();
+
+	public function new()
+	{
+		super('real-estate-rumble-save');
+
+		bind();
+
+		if (RealEstateRumbleSave.realEstateRumbleSave.data.watermarkMainMenuRER == null) RealEstateRumbleSave.realEstateRumbleSave.data.watermarkMainMenuRER = true;
+		if (RealEstateRumbleSave.realEstateRumbleSave.data.customTitleScreenRER == null) RealEstateRumbleSave.realEstateRumbleSave.data.customTitleScreenRER = true; 
+		if (RealEstateRumbleSave.realEstateRumbleSave.data.cashMechanicRER == null) RealEstateRumbleSave.realEstateRumbleSave.data.cashMechanicRER = true;
+		if (RealEstateRumbleSave.realEstateRumbleSave.data.rerBg == null) RealEstateRumbleSave.realEstateRumbleSave.data.rerBg = true;
+
+		flush();
+	}
+
+	static function bind()
+	{
+		realEstateRumbleSave.bind("RealEstateRumble", "The Rumblin' Teamuh");
+	}
+
+	static function flush()
+	{
+		realEstateRumbleSave.flush();
+	}
+
+	static function cashMechanicEnabled()
+	{
+		return (realEstateRumbleSave.data.cashMechanicRER);
+	}
+
+	static function customTitleScreenEnabled()
+	{
+		return (realEstateRumbleSave.data.customTitleScreenRER);
+	}
+
+	static function remaxBgEnabled()
+	{
+		return (realEstateRumbleSave.data.rerBg);
+	}
+
+	static function watermarkMainMenuEnabled()
+	{
+		return (realEstateRumbleSave.data.watermarkMainMenuRER);
+	}
+
+	static function getCash()
+	{
+		return (realEstateRumbleSave.data.rerCash);
+	}
+}
