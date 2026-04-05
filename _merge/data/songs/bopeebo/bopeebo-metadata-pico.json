@@ -1,0 +1,31 @@
+[
+  [
+    {
+      "op": "add",
+      "path": "/playData/characters/altInstrumentals",
+      "value": []
+    }
+  ],
+  [
+    {
+      "op": "add",
+      "path": "/playData/characters/altInstrumentals/-",
+      "value": ""
+    },
+    {
+      "op": "add",
+      "path": "/playData/characters/altInstrumentals/-",
+      "value": "robbie"
+    },
+    {
+      "op": "add",
+      "path": "/playData/characters/altInstrumentals/-",
+      "value": "scott"
+    },
+    {
+      "op": "add",
+      "path": "/playData/characters/altInstrumentals/-",
+      "value": "mike"
+    }
+  ]
+]
